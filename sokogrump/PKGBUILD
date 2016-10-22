@@ -1,0 +1,34 @@
+# Maintainer: Mlendea Horațiu <Mlendea.Horatiu@GMail.com>
+pkgname=sokogrump
+pkgver=1.0
+pkgrel=1
+pkgdesc="Sokoban-like puzzle game featuring the Grumpy Cat"
+arch=('any')
+url="https://github.com/HoratiuMl/SokoGrump"
+license=('GPL')
+depends_i686=('mono')
+install=
+source=("https://github.com/HoratiuMl/SokoGrump/releases/download/1.0/SokoGrump_Linux_x86.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd $srcdir
+    tar xf SokoGrump_Linux_x86.tar.gz
+}
+
+package() {
+	cd $srcdir
+	install -d "${pkgdir}/$HOME/.sokogrump"
+	install -d "${pkgdir}/usr/share/applications"
+	install -d "${pkgdir}/usr/share/pixmaps"
+	
+	install -m755 "${srcdir}/SokoGrump_Linux_x86/sokogrump" "${pkgdir}/$HOME/.sokogrump"
+	install -m755 "${srcdir}/SokoGrump_Linux_x86/SokoGrump.exe" "${pkgdir}/$HOME/.sokogrump"
+	install -m755 "${srcdir}/../sokogrump.desktop" "${pkgdir}/usr/share/applications"
+	install -m644 "${srcdir}/../sokogrump.png" "${pkgdir}/usr/share/pixmaps"
+	sed -i 's/USERGOESHERE/'$USER'/g' "${pkgdir}/usr/share/applications/sokogrump.desktop"
+	
+	cp -r "${srcdir}/SokoGrump_Linux_x86/Levels" "${pkgdir}/$HOME/.sokogrump"
+	cp -r "${srcdir}/SokoGrump_Linux_x86/Resources" "${pkgdir}/$HOME/.sokogrump"
+}
+
