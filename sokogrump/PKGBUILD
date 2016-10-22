@@ -1,7 +1,7 @@
 # Maintainer: Mlendea Horațiu <Mlendea.Horatiu@GMail.com>
 pkgname=sokogrump
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sokoban-like puzzle game featuring the Grumpy Cat"
 arch=('any')
 url="https://github.com/HoratiuMl/SokoGrump"
