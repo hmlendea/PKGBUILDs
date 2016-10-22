@@ -18,6 +18,8 @@ do
         makepkg
 
         cd $DIR
-        repo-add -n $REPONAME.db.tar.gz $D/*.tar.xz
+        repo-add -n -R $REPONAME.db.tar.gz $D/*.tar.xz
     fi
 done
+
+echo "Recommended release tag: " $(date +%Y-%m-%d_%H-%M-%S)
