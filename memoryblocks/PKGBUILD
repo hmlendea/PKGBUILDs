@@ -1,0 +1,29 @@
+# Maintainer: Mlendea Horațiu <Mlendea.Horatiu@GMail.com>
+pkgname=memoryblocks
+pkgver=1.0
+pkgrel=1
+pkgdesc="Open-source reimplementation of the classic memory puzzle game using GTK"
+arch=('any')
+url="https://github.com/HoratiuMl/MemoryBlocks"
+license=('GPL')
+depends=('mono')
+install=
+source=("https://github.com/HoratiuMl/MemoryBlocks/releases/download/1.0/MemoryBlocks-Linux-x86.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd $srcdir
+    tar xf MemoryBlocks-Linux-x86.tar.gz
+}
+
+package() {
+	cd $srcdir
+	install -d "${pkgdir}/opt/MemoryBlocks"
+	install -d "${pkgdir}/usr/share/applications"
+	install -d "${pkgdir}/usr/share/pixmaps"
+	
+	install -m755 "${srcdir}/MemoryBlocks-Linux-x86/MemoryBlocks.exe" "${pkgdir}/opt/MemoryBlocks"
+	install -m644 "${srcdir}/MemoryBlocks-Linux-x86/memoryblocks.png" "${pkgdir}/usr/share/pixmaps"
+	install -m755 "${srcdir}/../memoryblocks.desktop" "${pkgdir}/usr/share/applications"
+}
+

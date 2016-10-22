@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=MemoryBlocks
+Type=Application
+Exec=/opt/MemoryBlocks/MemoryBlocks.exe
+Icon=memoryblocks
+StartupWMClass=MemoryBlocks
+Categories=Game;
