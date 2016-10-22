@@ -4,3 +4,9 @@
 */*.TAR.gz
 */*.TAR.GZ
 */*.tar.xz
+
+*.db
+*.db.tar.gz
+*.files
+*.files.tar.gz
+*.old
