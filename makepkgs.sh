@@ -15,7 +15,7 @@ do
     if [ -f "$D/PKGBUILD" ]; then
         cd $D
         echo "Making package in $D..."
-        makepkg
+        makepkg -Csrf --noconfirm
 
         cd $DIR
         repo-add -n -R $REPONAME.db.tar.gz $D/*.tar.xz
