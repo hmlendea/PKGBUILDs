@@ -1,0 +1,20 @@
+# Maintainer: Mlendea Horațiu <Mlendea.Horatiu@GMail.com>
+pkgname=start-wmclass
+pkgver=1.0
+pkgrel=0
+pkgdesc="Start applications with a specified WMCLASS"
+arch=('any')
+url="https://github.com/hmlendea/start-wmclass"
+license=('GPL')
+depends_i686=('xdotool' 'xorg-xprop' 'grep' 'gawk')
+install=
+source=(https://github.com/hmlendea/start-wmclass/releases/download/1.0/start-wmclass.zip)
+sha256sums=('SKIP')
+
+package() {
+    unzip -o "${srcdir}/start-wmclass.zip"
+    
+	install -d "${pkgdir}/usr/bin"
+	install -m755 "${srcdir}/start-wmclass.sh" "${pkgdir}/usr/bin/start-wmclass"
+}
+
