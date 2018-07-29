@@ -31,7 +31,7 @@ for PKGDIR in pkg/*; do
         cp $PKGFILE "$DIR/repo/"
 
         cd $DIR
-        repo-add -n -R "repo/$REPONAME.db.tar.gz" repo/$PKGFILE
+        repo-add "repo/$REPONAME.db.tar.gz" "repo/$PKGFILE"
     done
 done
 
