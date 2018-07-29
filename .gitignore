@@ -6,5 +6,4 @@ pkg/*/*.TAR.GZ
 pkg/*/*.tar.xz
 
 repo/*.old
-repo/*.files
-repo/*.files.*
+repo/*.files.old
