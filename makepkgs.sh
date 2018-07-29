@@ -8,18 +8,31 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 cd "$DIR"
 
-REPONAME="horatiuml"
+REPONAME="hmlendea"
 
-for D in `find ./ -maxdepth 1 -type d`
-do
-    if [ -f "$D/PKGBUILD" ]; then
-        cd $D
-        echo "Making package in $D..."
-        makepkg -Csrf --noconfirm
+echo "Cleaning the current repository database"
+rm -rf $DIR/repo/*
+
+for PKGDIR in pkg/*; do
+    if [ ! -f "$PKGDIR/PKGBUILD" ]; then
+        continue
+    fi
+
+    cd $PKGDIR
+    echo "Making package in $PKGDIR..."
+    makepkg -Csrf --noconfirm
+
+    PKGNAME=$(cat PKGBUILD | grep "^pkgname=" | awk -F'=' '{print $2}')
+    PKGVER=$(cat PKGBUILD | grep "^pkgver=" | awk -F'=' '{print $2}')
+    PKGREL=$(cat PKGBUILD | grep "^pkgrel=" | awk -F'=' '{print $2}')
+
+    for PKGFILE in $PKGNAME-$PKGVER-$PKGREL-*.pkg.tar.xz; do
+        echo "Registering $PKGFILE"
+        cp $PKGFILE "$DIR/repo/"
 
         cd $DIR
-        repo-add -n -R $REPONAME.db.tar.gz $D/*.tar.xz
-    fi
+        repo-add -n -R "repo/$REPONAME.db.tar.gz" repo/$PKGFILE
+    done
 done
 
 echo "Recommended release tag: " $(date +%Y-%m-%d_%H-%M-%S)

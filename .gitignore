@@ -1,12 +1,10 @@
-*/pkg
-*/src
-*/*.tar.gz
-*/*.TAR.gz
-*/*.TAR.GZ
-*/*.tar.xz
+pkg/*/pkg
+pkg/*/src
+pkg/*/*.tar.gz
+pkg/*/*.TAR.gz
+pkg/*/*.TAR.GZ
+pkg/*/*.tar.xz
 
-*.db
-*.db.tar.gz
-*.files
-*.files.tar.gz
-*.old
+repo/*.old
+repo/*.files
+repo/*.files.*
