@@ -1,0 +1,20 @@
+# Maintainer: Mlendea Horațiu <Mlendea.Horatiu@GMail.com>
+pkgname=optiprime
+pkgver=1.0
+pkgrel=0
+pkgdesc="Start applications using an optimised primusrun"
+arch=('any')
+url="https://github.com/hmlendea/${pkgname}"
+license=('GPL')
+depends=('bumblebee')
+install=
+source=(https://github.com/hmlendea/${pkgname}/releases/download/${pkgver}/${pkgname}.zip)
+sha256sums=('SKIP')
+
+package() {
+    unzip -o "${srcdir}/${pkgname}.zip"
+
+	install -d "${pkgdir}/usr/bin"
+	install -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+}
+
