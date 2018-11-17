@@ -1,6 +1,6 @@
 # Maintainer: Mlendea Horațiu <Mlendea.Horatiu@GMail.com>
 pkgname=optiprime
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=0
 pkgdesc="Start applications using an optimised primusrun"
 arch=('any')
