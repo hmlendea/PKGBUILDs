@@ -1,0 +1,43 @@
+# Maintainer: Mlendea Horațiu <Mlendea.Horatiu@GMail.com>
+pkgname=gimp-data-extras
+pkgver=2.0.4
+pkgrel=1
+epoch=
+pkgdesc="Extra GIMP brushes, patterns, and the removed Alpha to Logo filters"
+arch=('any')
+url="https://github.com/GNOME/gimp-data-extras"
+license=('GPL2')
+groups=()
+depends_x86=('gimp')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://github.com/GNOME/gimp-data-extras/archive/GIMP_DATA_EXTRAS_2_0_4.tar.gz")
+noextract=()
+md5sums=('a0a86725a0079776ae8c9e11b364be24')
+validpgpkeys=()
+
+build() {
+    cd $srcdir/$pkgname-GIMP_DATA_EXTRAS_2_0_4
+    find -name *.am | xargs rm
+}
+
+package() {
+    cd $srcdir/$pkgname-GIMP_DATA_EXTRAS_2_0_4
+
+    mkdir -p "${pkgdir}/usr/share/gimp/2.0/"
+
+    cp -rf "${srcdir}/${pkgname}-GIMP_DATA_EXTRAS_2_0_4/brushes" "${pkgdir}/usr/share/gimp/2.0/"
+    cp -rf "${srcdir}/${pkgname}-GIMP_DATA_EXTRAS_2_0_4/gradients" "${pkgdir}/usr/share/gimp/2.0/"
+    cp -rf "${srcdir}/${pkgname}-GIMP_DATA_EXTRAS_2_0_4/palettes" "${pkgdir}/usr/share/gimp/2.0/"
+    cp -rf "${srcdir}/${pkgname}-GIMP_DATA_EXTRAS_2_0_4/patterns" "${pkgdir}/usr/share/gimp/2.0/"
+    cp -rf "${srcdir}/${pkgname}-GIMP_DATA_EXTRAS_2_0_4/scripts" "${pkgdir}/usr/share/gimp/2.0/"
+}
+
