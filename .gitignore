@@ -1,9 +1,8 @@
 pkg/*/pkg
 pkg/*/src
-pkg/*/*.tar.gz
-pkg/*/*.TAR.gz
-pkg/*/*.TAR.GZ
-pkg/*/*.tar.xz
+pkg/*/*.[Tt][Aa][Rr].[Gg][Zz]
+pkg/*/*.[Tt][Aa][Rr].[Xx][Zz]
+pkg/*/*.[Tt][Xx][Tt]
+pkg/*/*.[Rr][Uu][Nn]
 
 repo/*.old
-repo/*.files.old
