@@ -1,5 +1,6 @@
 pkg/*/pkg
 pkg/*/src
+pkg/*/*.zip
 pkg/*/*.[Tt][Aa][Rr].[Gg][Zz]
 pkg/*/*.[Tt][Aa][Rr].[Xx][Zz]
 pkg/*/*.[Tt][Xx][Tt]
