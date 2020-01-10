@@ -1,0 +1,18 @@
+# Maintainer: Mlendea Horațiu <Mlendea.Horatiu@GMail.com>
+pkgname=plex-video-optimiser
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="Start applications using an optimised primusrun"
+arch=('any')
+url="https://github.com/hmlendea/${pkgname}"
+license=('GPL')
+depends=('mkvtoolnix-cli' 'ffmpeg' 'perl-rename' 'glibc')
+install=
+source=(https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/${pkgname}.sh)
+sha256sums=('1573611d353349c26b308d14553c2cbff08e03c9d38414fb87d783a041cbd226')
+
+package() {
+	install -d "${pkgdir}/usr/bin"
+	install -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+}
+
