@@ -1,0 +1,45 @@
+# Maintainer: Mlendea Horațiu <Mlendea.Horatiu@GMail.com>
+pkgname=sennheiser-gsp670-pulseaudio-profile
+pkgver=1.1
+pkgrel=1
+epoch=
+pkgdesc="Sennheiser GSP 670 PulseAudio profile"
+arch=('i686' 'x86_64')
+url="https://github.com/szszoke/sennheiser-gsp670-pulseaudio-profile"
+license=('custom')
+groups=()
+depends_i686=()
+depends_x86_64=()
+makedepends=('git')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://github.com/szszoke/sennheiser-gsp670-pulseaudio-profile/archive/1.1.tar.gz")
+noextract=()
+md5sums=('e1670fea3307f4da993dbe22d5276894')
+validpgpkeys=()
+
+build() {
+    cd $srcdir
+    tar xf $pkgver.tar.gz
+}
+
+package() {
+    cd $srcdir/$pkgname-${pkgver}
+
+    mkdir -p "${pkgdir}/etc/udev/rules.d/"
+    mkdir -p "${pkgdir}/usr/share/pulseaudio/alsa-mixer/profile-sets/"
+    mkdir -p "${pkgdir}/usr/share/pulseaudio/alsa-mixer/paths/"
+
+    cp -f "${srcdir}/${pkgname}-${pkgver}/91-pulseaudio-sennheiser-gsp670.rules" "${pkgdir}/etc/udev/rules.d/"
+    cp -f "${srcdir}/${pkgname}-${pkgver}/sennheiser-gsp670-usb-audio.conf" "${pkgdir}/usr/share/pulseaudio/alsa-mixer/profile-sets/"
+    cp -f "${srcdir}/${pkgname}-${pkgver}/sennheiser-gsp670-output-main.conf" "${pkgdir}/usr/share/pulseaudio/alsa-mixer/paths/"
+    cp -f "${srcdir}/${pkgname}-${pkgver}/sennheiser-gsp670-output-comm.conf" "${pkgdir}/usr/share/pulseaudio/alsa-mixer/paths/"
+}
+
