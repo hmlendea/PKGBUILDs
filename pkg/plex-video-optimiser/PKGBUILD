@@ -2,7 +2,7 @@
 pkgname=plex-video-optimiser
 pkgver=1.0.0
 pkgrel=0
-pkgdesc="Start applications using an optimised primusrun"
+pkgdesc="Optimises video files for direct streaming to most devices using Plex"
 arch=('any')
 url="https://github.com/hmlendea/${pkgname}"
 license=('GPL')
