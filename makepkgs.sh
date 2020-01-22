@@ -38,7 +38,7 @@ done
 rm "$DIR/repo/$REPONAME.db"
 cp "$DIR/repo/$REPONAME.db.tar.gz" "$DIR/repo/$REPONAME.db"
 
-if [ -f "$DIR/repo/*.old" ]; then
+if [ -f "$DIR/repo/$REPONAME.old" ]; then
     rm "$DIR/repo/*.old"
 fi
 
