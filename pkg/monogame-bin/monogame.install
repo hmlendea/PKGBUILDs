@@ -1,3 +1,0 @@
-post_install() {
-    xdg-mime install --mode system --novendor "/usr/share/mime/packages/mgcb.xml"
-}
