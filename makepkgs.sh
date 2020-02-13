@@ -38,8 +38,9 @@ done
 rm "$DIR/repo/$REPONAME.db"
 cp "$DIR/repo/$REPONAME.db.tar.gz" "$DIR/repo/$REPONAME.db"
 
-if [ -f "$DIR/repo/$REPONAME.db.tar.gz.old" ]; then
-    rm "$DIR/repo/*.old"
+if [ -f "${DIR}/repo/${REPONAME}.db.tar.gz.old" ]; then
+    rm "${DIR}/repo/${REPONAME}.db.tar.gz.old"
+    rm "${DIR}/repo/${REPONAME}.files.tar.gz.old"
 fi
 
 echo "Recommended release tag: " $(date +%Y-%m-%d_%H-%M-%S)
