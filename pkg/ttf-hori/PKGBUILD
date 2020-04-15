@@ -1,0 +1,22 @@
+pkgname=ttf-hori
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="Hori's fonts collection"
+arch=('any')
+url=""
+license=('GPL')
+install=
+source=('https://dl.dafont.com/dl/?f=hesperides'
+        'https://dl.dafont.com/dl/?f=optimusprinceps'
+        'https://dl.dafont.com/dl/?f=oblivion'
+        'https://dl.dafont.com/dl/?f=planewalker')
+sha256sums=('badedee1b9309c00b1c9246a109d8ea9e0bca99c9b84c5ab5e40c691abf66cf8'
+            'e15919cc66bed71f1b2b58619608040e98e736cd835ec0b3c4a65777b41db5ef'
+            '6511d9fb2bccb8356570bf8874b165e9fe948c253184cea95b1281911b1e4c39'
+            'e0aa38fd5e8b752164d9367c46005a3bc89e2cb909b77cc9a4a2f05f7d90cab7')
+
+package() {
+	install -d "${pkgdir}/usr/share/fonts/${pkgname}/"
+	install -m644 "${srcdir}"/*.ttf "${pkgdir}/usr/share/fonts/${pkgname}/"
+}
+
