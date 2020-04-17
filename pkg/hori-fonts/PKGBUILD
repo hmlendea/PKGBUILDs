@@ -1,4 +1,4 @@
-pkgname=ttf-hori
+pkgname=hori-fonts
 pkgver=1.0.0
 pkgrel=0
 pkgdesc="Hori's fonts collection"
@@ -17,6 +17,9 @@ sha256sums=('badedee1b9309c00b1c9246a109d8ea9e0bca99c9b84c5ab5e40c691abf66cf8'
 
 package() {
 	install -d "${pkgdir}/usr/share/fonts/${pkgname}/"
-	install -m644 "${srcdir}"/*.ttf "${pkgdir}/usr/share/fonts/${pkgname}/"
+	install -m644 "${srcdir}"/HESPD___.TTF "${pkgdir}/usr/share/fonts/${pkgname}/Hesperides.ttf"
+	install -m644 "${srcdir}"/OptimusPrinceps.ttf "${pkgdir}/usr/share/fonts/${pkgname}/Optimus Princeps.ttf"
+	install -m644 "${srcdir}"/oblivion-font.ttf "${pkgdir}/usr/share/fonts/${pkgname}/Oblivion.ttf"
+	install -m644 "${srcdir}"/Planewalker.otf "${pkgdir}/usr/share/fonts/${pkgname}/Planewalker.otf"
 }
 
