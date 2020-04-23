@@ -8,7 +8,7 @@ license=('GPL')
 depends=('mkvtoolnix-cli' 'ffmpeg' 'perl-rename' 'glibc')
 install=
 source=(https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/${pkgname}.sh)
-sha256sums=('a676410896cd16e7ba6fbe9304e4d6e8fffbce9ecb6c29088c3bb68476b626f5')
+sha256sums=('390477fb665f093d115df2e8eb7527a46b7f816b150086ef7e27d36200d0ad58')
 
 package() {
 	install -d "${pkgdir}/usr/bin"
