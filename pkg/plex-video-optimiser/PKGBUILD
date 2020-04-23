@@ -1,5 +1,5 @@
 pkgname=plex-video-optimiser
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=0
 pkgdesc="Optimises video files for direct streaming to most devices using Plex"
 arch=('any')
