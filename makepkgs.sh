@@ -9,18 +9,21 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 cd "$DIR"
 
 REPONAME="hmlendea"
+REPODIR="${DIR}/repo"
+REPODB="${REPODIR}/${REPONAME}.db"
 
-if [ -f "${DIR}/repo/${REPONAME}.db" ]; then
+[ ! -d "${REPODIR}" ] && mkdir "${REPODIR}"
+if [ -f "${REPODB}" ]; then
     echo "Cleaning the current repository database"
 
-    rm "${DIR}/repo/${REPONAME}.db"
-    rm "${DIR}/repo/${REPONAME}.db.tar.gz"
-    rm "${DIR}/repo/${REPONAME}.files"
-    rm "${DIR}/repo/${REPONAME}.files.tar.gz"
+    rm "${REPODB}"
+    rm "${REPODB}.tar.gz"
+    rm "${REPODIR}/${REPONAME}.files"
+    rm "${REPODIR}/${REPONAME}.files.tar.gz"
 fi
 
-for PKGDIR in pkg/*; do
-    if [ ! -f "$PKGDIR/PKGBUILD" ]; then
+for PKGDIR in ${DIR}/pkg/*; do
+    if [ ! -f "${PKGDIR}/PKGBUILD" ]; then
         continue
     fi
 
@@ -31,35 +34,34 @@ for PKGDIR in pkg/*; do
     PKGID="${PKGNAME}-${PKGVER}-${PKGREL}"
 
     # TODO: Support other architectures
-    if [ ! -f "repo/${PKGID}-any.pkg.tar.xz" ] &&
-       [ ! -f "repo/${PKGID}-x86_64.pkg.tar.xz" ]; then
-        cd ${PKGDIR}
-
+    if [ ! -f "${REPODIR}/${PKGID}-any.pkg.tar.xz" ] &&
+       [ ! -f "${REPODIR}/${PKGID}-x86_64.pkg.tar.xz" ]; then
         echo "Making ${PKGID}..."
+        cd "${PKGDIR}"
         makepkg -Csrf --noconfirm
 
-        echo "Removing the old versions of ${PKGNAME}..."
-        rm ${DIR}/repo/${PKGNAME}-*.pkg.tar.xz
+        if [ -f ${REPODIR}/${PKGNAME}-*.pkg.tar.xz ]; then
+            echo "Removing the old versions of ${PKGNAME}..."
+            rm ${REPODIR}/${PKGNAME}-*.pkg.tar.xz
+        fi
 
-        for PKGFILE in ${PKGID}-*.pkg.tar.xz; do
-            cp ${PKGFILE} "$DIR/repo/"
+        for PKGFILE in ${PKGDIR}/${PKGID}-*.pkg.tar.xz; do
+            cp ${PKGFILE} "${REPODIR}/"
         done
     fi
 done
 
-cd ${DIR}
-
-for PKGFILE in repo/*.pkg.tar.xz; do
+for PKGFILE in ${REPODIR}/*.pkg.tar.xz; do
     echo "Registering ${PKGFILE}"
-    repo-add "repo/${REPONAME}.db.tar.gz" "${PKGFILE}"
+    repo-add "${REPODB}.tar.gz" "${PKGFILE}"
 done
 
-rm "$DIR/repo/$REPONAME.db"
-cp "$DIR/repo/$REPONAME.db.tar.gz" "$DIR/repo/$REPONAME.db"
+rm "${REPODB}"
+cp "${REPODB}.tar.gz" "${REPODB}"
 
-if [ -f "${DIR}/repo/${REPONAME}.db.tar.gz.old" ]; then
-    rm "${DIR}/repo/${REPONAME}.db.tar.gz.old"
-    rm "${DIR}/repo/${REPONAME}.files.tar.gz.old"
+if [ -f "${REPODB}.tar.gz.old" ]; then
+    rm "${REPODB}.tar.gz.old"
+    rm "${REPODIR}/${REPONAME}.files.tar.gz.old"
 fi
 
 echo "Recommended release tag: " $(date +%Y-%m-%d_%H-%M-%S)
