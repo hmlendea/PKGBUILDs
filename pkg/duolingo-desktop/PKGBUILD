@@ -1,0 +1,28 @@
+pkgname=duolingo-desktop
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Desktop client for Duolingo, using Electron"
+arch=('any')
+url="https://github.com/HoratiuMl/duolingo-desktop"
+license=('GPL')
+install=
+source=("https://github.com/hmlendea/duolingo-desktop/releases/download/v${pkgver}/duolingo-desktop-${pkgver}.zip"
+        "https://d35aaqx5ub95lt.cloudfront.net/favicon.ico")
+sha256sums=('8ae4c394e88c8ff88af62b3365c8c75b269434f177cf53480d29a502764f712b'
+            'SKIP')
+
+build() {
+    cd ${srcdir}
+    rm "${srcdir}/duolingo-desktop-${pkgver}.zip"
+}
+
+package() {
+    install -d "${srcdir}" "${pkgdir}/opt/${pkgname}"
+	install -d "${pkgdir}/usr/share/applications"
+	install -d "${pkgdir}/usr/share/pixmaps"
+
+    cp -r ${srcdir}/* "${pkgdir}/opt/${pkgname}/"
+	install -m644 "${srcdir}/favicon.ico" "${pkgdir}/usr/share/pixmaps/duolingo.ico"
+	install -m755 "${srcdir}/../${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+}
+
