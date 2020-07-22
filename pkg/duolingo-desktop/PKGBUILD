@@ -1,5 +1,5 @@
 pkgname=duolingo-desktop
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Desktop client for Duolingo, using Electron"
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL')
 install=
 source=("https://github.com/hmlendea/duolingo-desktop/releases/download/v${pkgver}/duolingo-desktop-${pkgver}.zip"
         "https://d35aaqx5ub95lt.cloudfront.net/favicon.ico")
-sha256sums=('8ae4c394e88c8ff88af62b3365c8c75b269434f177cf53480d29a502764f712b'
+sha256sums=('4ed0a32e27a354eedb34428b09a1a8ddfee8c7687e746d8f4487d212fc9217fb'
             'SKIP')
 
 build() {
