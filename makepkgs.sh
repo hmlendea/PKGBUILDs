@@ -34,24 +34,24 @@ for PKGDIR in ${DIR}/pkg/*; do
     PKGID="${PKGNAME}-${PKGVER}-${PKGREL}"
 
     # TODO: Support other architectures
-    if [ ! -f "${REPODIR}/${PKGID}-any.pkg.tar.xz" ] &&
-       [ ! -f "${REPODIR}/${PKGID}-x86_64.pkg.tar.xz" ]; then
+    if [ ! -f "${REPODIR}/${PKGID}-any.pkg.tar.zst" ] &&
+       [ ! -f "${REPODIR}/${PKGID}-x86_64.pkg.tar.zst" ]; then
         echo "Making ${PKGID}..."
         cd "${PKGDIR}"
         makepkg -Csrf --noconfirm
 
-        if [ -f ${REPODIR}/${PKGNAME}-*.pkg.tar.xz ]; then
+        if [ -f ${REPODIR}/${PKGNAME}-*.pkg.tar.zst ]; then
             echo "Removing the old versions of ${PKGNAME}..."
-            rm ${REPODIR}/${PKGNAME}-*.pkg.tar.xz
+            rm ${REPODIR}/${PKGNAME}-*.pkg.tar.zst
         fi
 
-        for PKGFILE in ${PKGDIR}/${PKGID}-*.pkg.tar.xz; do
+        for PKGFILE in ${PKGDIR}/${PKGID}-*.pkg.tar.zst; do
             cp ${PKGFILE} "${REPODIR}/"
         done
     fi
 done
 
-for PKGFILE in ${REPODIR}/*.pkg.tar.xz; do
+for PKGFILE in ${REPODIR}/*.pkg.tar.zst; do
     echo "Registering ${PKGFILE}"
     repo-add "${REPODB}.tar.gz" "${PKGFILE}"
 done
