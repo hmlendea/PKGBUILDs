@@ -1,0 +1,29 @@
+pkgname=gimp-plugin-pixel-art-scalers
+pkgver=1.1
+pkgrel=1
+epoch=
+pkgdesc="Pixel art scalers plugin for GIMP"
+arch=('any')
+url="https://github.com/bbbbbr/gimp-plugin-pixel-art-scalers"
+license=('GPL3')
+groups=()
+depends_x86=('gimp')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://github.com/bbbbbr/gimp-plugin-pixel-art-scalers/releases/download/v${pkgver}/Linux_plugin-pixel-art-scalers")
+noextract=()
+sha256sums=('874a65d4b1504d06c863a1615febf4766bc37b8762f37ff9d51e4cd282f658d2')
+validpgpkeys=()
+
+package() {
+    mkdir -p "${pkgdir}/usr/lib/gimp/2.0/plug-ins"
+	install -m644 "${srcdir}/Linux_plugin-pixel-art-scalers" "${pkgdir}/usr/lib/gimp/2.0/plug-ins/${pkgname}"
+}
