@@ -25,5 +25,5 @@ validpgpkeys=()
 
 package() {
     mkdir -p "${pkgdir}/usr/lib/gimp/2.0/plug-ins"
-	install -m644 "${srcdir}/Linux_plugin-pixel-art-scalers" "${pkgdir}/usr/lib/gimp/2.0/plug-ins/${pkgname}"
+	install -m755 "${srcdir}/Linux_plugin-pixel-art-scalers" "${pkgdir}/usr/lib/gimp/2.0/plug-ins/${pkgname}"
 }
