@@ -1,0 +1,28 @@
+pkgname=geforcenow-electron
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Linux client for GeForce NOW, using the GFN version for ChromeOS and Electron"
+arch=('any')
+url="https://github.com/hmlendea/${pkgname}"
+license=('CCPL')
+install=
+source=("https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/geforcenow_${pkgver}_linux.zip"
+        "https://www.nvidia.com/favicon.ico")
+sha256sums=('9eaaf6fff5b8b6c6d444413a64acae6c0dceaea0805db960dc597dc55e9b1477'
+            'SKIP')
+
+build() {
+    cd ${srcdir}
+    rm "${srcdir}/geforcenow_${pkgver}_linux.zip"
+}
+
+package() {
+    install -d "${srcdir}" "${pkgdir}/opt/${pkgname}"
+	install -d "${pkgdir}/usr/share/applications"
+	install -d "${pkgdir}/usr/share/pixmaps"
+
+    cp -r ${srcdir}/* "${pkgdir}/opt/${pkgname}/"
+	install -m644 "${srcdir}/favicon.ico" "${pkgdir}/usr/share/pixmaps/nvidia.ico"
+	install -m755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+}
+

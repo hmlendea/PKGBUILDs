@@ -8,3 +8,4 @@ pkg/*/*.[Tt][Xx][Tt]
 pkg/*/*.[Rr][Uu][Nn]
 
 repo/
+*.zip
