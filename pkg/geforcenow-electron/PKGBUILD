@@ -1,5 +1,5 @@
 pkgname=geforcenow-electron
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Linux client for GeForce NOW, using the GFN version for ChromeOS and Electron"
 arch=("armv7l" "i686" "x86_64")
@@ -7,9 +7,9 @@ url="https://github.com/hmlendea/${pkgname}"
 license=('CCPL')
 install=
 source=("https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/geforcenow_${pkgver}_linux.zip"
-        "https://www.nvidia.com/favicon.ico")
-sha256sums=('319abfcc8e34cecbaa9b7dcb585614c4932f4d04f71b7dd70711b06e93a54679'
-            'SKIP')
+        "https://raw.githubusercontent.com/hmlendea/geforcenow-electron/master/icon.png")
+sha256sums=('e1fd59a82ccc247ddd356140d87cb98225c118c07d019a0b414794b9d05e15d3'
+            '582ad4bb073926e51d8acaa0ab81aa70a1dbe4736eda0cf130b6ae689982b7a0')
 
 build() {
     cd ${srcdir}
@@ -22,7 +22,7 @@ package() {
 	install -d "${pkgdir}/usr/share/pixmaps"
 
     cp -r ${srcdir}/* "${pkgdir}/opt/${pkgname}/"
-	install -m644 "${srcdir}/favicon.ico" "${pkgdir}/usr/share/pixmaps/nvidia.ico"
+	install -m644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/nvidia.png"
 	install -m755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
 }
 
