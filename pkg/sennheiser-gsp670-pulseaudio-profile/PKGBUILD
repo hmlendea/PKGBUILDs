@@ -1,6 +1,6 @@
 pkgname=sennheiser-gsp670-pulseaudio-profile
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Sennheiser GSP 670 PulseAudio profile"
 arch=('any')
@@ -32,12 +32,12 @@ package() {
     cd ${srcdir}/${pkgname}-${pkgver}
 
     mkdir -p "${pkgdir}/etc/udev/rules.d/"
-    mkdir -p "${pkgdir}/usr/share/pulseaudio/alsa-mixer/profile-sets/"
-    mkdir -p "${pkgdir}/usr/share/pulseaudio/alsa-mixer/paths/"
+    mkdir -p "${pkgdir}/usr/share/alsa-card-profile/mixer/profile-sets/"
+    mkdir -p "${pkgdir}/usr/share/alsa-card-profile/mixer/paths/"
 
     cp -f "${srcdir}/${pkgname}-${pkgver}/91-pulseaudio-sennheiser-gsp670.rules" "${pkgdir}/etc/udev/rules.d/"
-    cp -f "${srcdir}/${pkgname}-${pkgver}/sennheiser-gsp670-usb-audio.conf" "${pkgdir}/usr/share/pulseaudio/alsa-mixer/profile-sets/"
-    cp -f "${srcdir}/${pkgname}-${pkgver}/sennheiser-gsp670-input-comm.conf" "${pkgdir}/usr/share/pulseaudio/alsa-mixer/paths/"
-    cp -f "${srcdir}/${pkgname}-${pkgver}/sennheiser-gsp670-output-main.conf" "${pkgdir}/usr/share/pulseaudio/alsa-mixer/paths/"
-    cp -f "${srcdir}/${pkgname}-${pkgver}/sennheiser-gsp670-output-comm.conf" "${pkgdir}/usr/share/pulseaudio/alsa-mixer/paths/"
+    cp -f "${srcdir}/${pkgname}-${pkgver}/sennheiser-gsp670-usb-audio.conf" "${pkgdir}/usr/share/alsa-card-profile/mixer/profile-sets/"
+    cp -f "${srcdir}/${pkgname}-${pkgver}/sennheiser-gsp670-input-comm.conf" "${pkgdir}/usr/share/alsa-card-profile/mixer/paths/"
+    cp -f "${srcdir}/${pkgname}-${pkgver}/sennheiser-gsp670-output-main.conf" "${pkgdir}/usr/share/alsa-card-profile/mixer/paths/"
+    cp -f "${srcdir}/${pkgname}-${pkgver}/sennheiser-gsp670-output-comm.conf" "${pkgdir}/usr/share/alsa-card-profile/mixer/paths/"
 }
