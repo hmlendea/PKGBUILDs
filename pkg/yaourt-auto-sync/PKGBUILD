@@ -1,0 +1,20 @@
+pkgname=yaourt-auto-sync
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Systemd unit for automatically synchronising packages using Yaourt"
+arch=('any')
+url="https://github.com/hmlendea/${pkgname}"
+license=('CCPL')
+install=
+source=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}.zip")
+sha256sums=('a957e8d5542fad23232c8093c712468fdc0517135ef678b0d4e7293c518c1afd')
+
+package() {
+    cd "${srcdir}"
+    UNITS_DIR="/lib/systemd/system"
+
+    install -d "${pkgdir}/${UNITS_DIR}/"
+	install -m644 "${srcdir}/${pkgname}.service" "${pkgdir}/${UNITS_DIR}/"
+	install -m644 "${srcdir}/${pkgname}.timer" "${pkgdir}/${UNITS_DIR}/"
+}
+
