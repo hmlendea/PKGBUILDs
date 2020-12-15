@@ -10,11 +10,8 @@ source=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}.zip")
 sha256sums=('a957e8d5542fad23232c8093c712468fdc0517135ef678b0d4e7293c518c1afd')
 
 package() {
-    cd "${srcdir}"
-    UNITS_DIR="/lib/systemd/system"
-
-    install -d "${pkgdir}/${UNITS_DIR}/"
-	install -m644 "${srcdir}/${pkgname}.service" "${pkgdir}/${UNITS_DIR}/"
-	install -m644 "${srcdir}/${pkgname}.timer" "${pkgdir}/${UNITS_DIR}/"
+    UNITS_DIR="/usr/lib/systemd/system"
+    install -d -m755 "${pkgdir}/${UNITS_DIR}/"
+    install -m644 "${srcdir}/${pkgname}.service" "${pkgdir}/${UNITS_DIR}/"
+    install -m644 "${srcdir}/${pkgname}.timer" "${pkgdir}/${UNITS_DIR}/"
 }
-
