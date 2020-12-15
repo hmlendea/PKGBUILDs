@@ -1,0 +1,21 @@
+post_install() {
+    systemctl enable --now yaourt-auto-sync.timer || true
+}
+
+post_upgrade() {
+    systemctl --system daemon-reload >/dev/null || true
+    systemctl restart yaourt-auto-sync.timer || true
+}
+
+pre_remove() {
+    if [ -d /run/systemd/system ]; then
+        systemctl disable --now yaourt-auto-sync.timer >/dev/null
+    fi
+}
+
+post_remove() {
+    if [ -d /run/systemd/system ] ; then
+        systemctl --system daemon-reload >/dev/null || true
+    fi
+}
+
