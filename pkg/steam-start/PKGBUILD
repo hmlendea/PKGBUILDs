@@ -1,5 +1,5 @@
 pkgname=steam-start
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=0
 pkgdesc="Steam launcher script with compatibility fixes and Nvidia OPTIMUS support"
 arch=('any')
@@ -10,7 +10,7 @@ optdepends=('bumblebee: Nvidia OPTIMUS support'
             'optiprime: Optimised optirun/primusrun')
 install=
 source=(https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/${pkgname}.sh)
-sha256sums=('5b2769121047422e76fffbb95b6864a43c03ac8bfa0f2289eeba9ac526bf3baa')
+sha256sums=('c4d7caf928a021a206daa2bfb952cee33be0e0fa00b7c3c998a5d4d95d8b4408')
 
 package() {
 	install -d "${pkgdir}/usr/bin"
