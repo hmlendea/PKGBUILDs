@@ -1,5 +1,6 @@
 pkg/*/pkg
 pkg/*/src
+pkg/*/*.jar
 pkg/*/*.zip
 pkg/*/*.zst
 pkg/*/*.[Tt][Aa][Rr].[Gg][Zz]

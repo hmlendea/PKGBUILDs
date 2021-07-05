@@ -1,0 +1,21 @@
+pkgname=mouse-recorder
+pkgver=1.0.1
+pkgrel=0
+pkgdesc="Record and replay your mouse and keyboard actions"
+arch=('any')
+url="https://github.com/eguller/MouseRecorder"
+license=('Unlicense')
+depends=('jre-openjdk')
+install=
+source=(https://github.com/eguller/MouseRecorder/releases/download/v${pkgver}/MouseRecorder.jar)
+sha256sums=('SKIP')
+
+package() {
+	install -d "${pkgdir}/opt/MouseRecorder"
+	install -d "${pkgdir}/usr/bin"
+	install -d "${pkgdir}/usr/share/applications"
+	
+	install -m755 "${srcdir}/MouseRecorder.jar" "${pkgdir}/opt/MouseRecorder/"
+	install -m755 "${srcdir}/../mouse-recorder.sh" "${pkgdir}/usr/bin/${pkgname}"
+	install -m755 "${srcdir}/../mouse-recorder.desktop" "${pkgdir}/usr/share/applications"
+}
