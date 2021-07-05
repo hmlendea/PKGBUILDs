@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Mouse Recorder
+GenericName=Mouse Recorder
+Comment=Record and replay your mouse and keyboard actions
+Keywords=macros keyboard mouse recorder mouserecorder automation shortcut bind
+Exec=mouse-recorder
+Terminal=false
+Type=Application
+Icon=autokey
+Categories=Java;Utility;
