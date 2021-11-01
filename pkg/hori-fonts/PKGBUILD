@@ -1,6 +1,6 @@
 pkgname=hori-fonts
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Hori's fonts collection"
 arch=('any')
 url=""
@@ -12,12 +12,12 @@ source=('https://dl.dafont.com/dl/?f=hesperides'
         'https://dl.dafont.com/dl/?f=planewalker'
         'https://dl.dafont.com/dl/?f=soviet_style'
         'https://www.cufonfonts.com/download/font/segoe-script')
-sha256sums=('badedee1b9309c00b1c9246a109d8ea9e0bca99c9b84c5ab5e40c691abf66cf8'
-            'e15919cc66bed71f1b2b58619608040e98e736cd835ec0b3c4a65777b41db5ef'
-            '6511d9fb2bccb8356570bf8874b165e9fe948c253184cea95b1281911b1e4c39'
-            'e0aa38fd5e8b752164d9367c46005a3bc89e2cb909b77cc9a4a2f05f7d90cab7'
-            '91eb15dbc5d89d9f526a9074e7e365901ceb91fe23b9921bc931d8500fc40e43'
-            'c9664a62cd7b6193467c503b1275736ebea962809ef72b2969ca09e4c0aabe1b')
+sha512sums=('33d9ac7df86e7b69a1b71a7db5e94f6241c685f29b53819774cff76a00be5388df688dea26d29423ad652bd1bfc7b86b211147c2cff9d7e0d6e2ece017a4404d'
+            '3c78a99eeb17ace573f2ddee0fa066b1aa5efab81ad80c4f6af0cb97bef4036243e7a6c9e7f0d0fdba6acf4ad6e07c1878f6fc167256ee6d3e7ee2ad03f2dbbb'
+            '42627d505484b850d5e5170d6df80a5ebcccea6653cf7260f11a0ea7aa5fcec4a4a1d35f0bf28ec286dbf59a21efb36c36e1d3b7f9c210362c29ca6885eb6227'
+            '2303133d3b5cab2b5a0749555206f30ae91a3fb5aaa7255d8799085ea371698770e6ed13c56ce89a1059640b44762b6f9ebd72513b41cb1ca95dd5533c7ead8c'
+            '7065c831dd6768b7bada688294de1332df09eff0337a37874651dbba405aaaf6c3db44db15c585626e2989f9a74d9a95c4353df8ad3f10b0b32748379d7266a3'
+            '3c4131b47ae793eae43b878013be96f568b437cdd0275cdf5dcd510565b122003110ee64cb6f01ac1663e23d9ea4db168dc3d6b59fca708bab588d74ddc9eb11')
 
 package() {
 	install -d "${pkgdir}/usr/share/fonts/${pkgname}/"
