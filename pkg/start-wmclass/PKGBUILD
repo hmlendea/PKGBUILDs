@@ -1,19 +1,19 @@
 pkgname=start-wmclass
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Start applications with a specified WMCLASS"
 arch=('any')
-url="https://github.com/hmlendea/start-wmclass"
+url="https://github.com/hmlendea/${pkgname}"
 license=('GPL')
 depends_i686=('xdotool' 'xorg-xprop' 'grep' 'gawk')
 install=
-source=(https://github.com/hmlendea/start-wmclass/releases/download/1.0/start-wmclass.zip)
-sha256sums=('SKIP')
+source=(https://github.com/hmlendea/${pkgname}/releases/download/1.0/${pkgname}.zip)
+sha512sums=('9821f21f4160289d3b38804f1b792a9d943f3c8173fcc9d4db20d488b7f158a81712c5518ad35be389be404742336807e6fc9668645cbe61b2e5cddcad46db40')
 
 package() {
-    unzip -o "${srcdir}/start-wmclass.zip"
+    unzip -o "${srcdir}/${pkgname}.zip"
     
 	install -d "${pkgdir}/usr/bin"
-	install -m755 "${srcdir}/start-wmclass.sh" "${pkgdir}/usr/bin/start-wmclass"
+	install -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
 

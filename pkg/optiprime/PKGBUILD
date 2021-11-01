@@ -1,6 +1,6 @@
 pkgname=optiprime
 pkgver=1.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Start applications using an optimised primusrun"
 arch=('any')
 url="https://github.com/hmlendea/${pkgname}"
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('bumblebee')
 install=
 source=(https://github.com/hmlendea/${pkgname}/releases/download/${pkgver}/${pkgname}.zip)
-sha256sums=('SKIP')
+sha512sums=('4bb90c2be051f2a4d056aed5bba58303319c65207a5257ed820c55c446ba50e5de6f2fffcd628a498ecfd2b2878c8195eb4e89116d2d615d9e59a78be442dfd3')
 
 package() {
     unzip -o "${srcdir}/${pkgname}.zip"

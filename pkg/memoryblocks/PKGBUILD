@@ -1,14 +1,14 @@
 pkgname=memoryblocks
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source reimplementation of the classic memory puzzle game using GTK"
 arch=('any')
-url="https://github.com/HoratiuMl/MemoryBlocks"
+url="https://github.com/HoratiuMl/${pkgname}"
 license=('GPL')
 depends=('mono')
 install=
-source=("https://github.com/HoratiuMl/MemoryBlocks/releases/download/1.0/MemoryBlocks-Linux-x86.tar.gz")
-sha256sums=('SKIP')
+source=("https://github.com/HoratiuMl/${pkgname}/releases/download/1.0/MemoryBlocks-Linux-x86.tar.gz")
+sha512sums=('0e665146fb3843e7afa6b195fcd2e7449a4e48178eef52d4b1eeb8fb1856afc34db8fd187bf9ee19b2fc5cde0b3d9b30132fcb037cff90b00db0cd097be8a7a6')
 
 build() {
     cd $srcdir
@@ -17,11 +17,11 @@ build() {
 
 package() {
 	cd $srcdir
-	install -d "${pkgdir}/opt/MemoryBlocks"
+	install -d "${pkgdir}/opt/${pkgname}"
 	install -d "${pkgdir}/usr/share/applications"
 	install -d "${pkgdir}/usr/share/pixmaps"
 	
-	install -m755 "${srcdir}/MemoryBlocks-Linux-x86/MemoryBlocks.exe" "${pkgdir}/opt/MemoryBlocks"
+	install -m755 "${srcdir}/MemoryBlocks-Linux-x86/MemoryBlocks.exe" "${pkgdir}/opt/${pkgname}"
 	install -m644 "${srcdir}/MemoryBlocks-Linux-x86/memoryblocks.png" "${pkgdir}/usr/share/pixmaps"
 	install -m755 "${srcdir}/../memoryblocks.desktop" "${pkgdir}/usr/share/applications"
 }

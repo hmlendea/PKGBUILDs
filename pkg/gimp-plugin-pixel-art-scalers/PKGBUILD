@@ -1,10 +1,10 @@
 pkgname=gimp-plugin-pixel-art-scalers
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Pixel art scalers plugin for GIMP"
 arch=('any')
-url="https://github.com/bbbbbr/gimp-plugin-pixel-art-scalers"
+url="https://github.com/bbbbbr/${pkgname}"
 license=('GPL3')
 groups=()
 depends_x86=('gimp')
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/bbbbbr/gimp-plugin-pixel-art-scalers/releases/download/v${pkgver}/Linux_plugin-pixel-art-scalers")
+source=("https://github.com/bbbbbr/${pkgname}/releases/download/v${pkgver}/Linux_plugin-pixel-art-scalers")
 noextract=()
-sha256sums=('874a65d4b1504d06c863a1615febf4766bc37b8762f37ff9d51e4cd282f658d2')
+sha512sums=('e93c2827ee3722c03346144cfdc8ead425acfeaf27b34c45ba4b0d6699fe8a1d00a485c3cea1dd47cfb99aa75906bb7d57ecb98f44c65b6db1d3354dedda1fb6')
 validpgpkeys=()
 
 package() {

@@ -1,14 +1,14 @@
 pkgname=sokogrump
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Sokoban-like puzzle game featuring the Grumpy Cat"
 arch=('any')
-url="https://github.com/HoratiuMl/SokoGrump"
+url="https://github.com/HoratiuMl/${pkgname}"
 license=('GPL')
 depends_i686=('mono')
 install=
-source=("https://github.com/HoratiuMl/SokoGrump/releases/download/1.0/SokoGrump_Linux_x86.tar.gz")
-sha256sums=('SKIP')
+source=("https://github.com/HoratiuMl/${pkgname}/releases/download/1.0/SokoGrump_Linux_x86.tar.gz")
+sha512sums=('4ab616a85e3723d8bf98d16f5c43f06f481ab9f33cee0c8ccbe7ee3fc82a4fa4ce65302d491e34861ef92204ec20ef8366808d5bfb6b19569f47cee109033f4f')
 
 build() {
     cd $srcdir
@@ -17,19 +17,19 @@ build() {
 
 package() {
 	cd $srcdir
-	install -d "${pkgdir}/$HOME/.sokogrump"
+	install -d "${pkgdir}/$HOME/.${pkgname}"
 	install -d "${pkgdir}/usr/share/applications"
 	install -d "${pkgdir}/usr/share/pixmaps"
 	
-	install -m755 "${srcdir}/SokoGrump_Linux_x86/sokogrump" "${pkgdir}/$HOME/.sokogrump"
-	install -m755 "${srcdir}/SokoGrump_Linux_x86/SokoGrump.exe" "${pkgdir}/$HOME/.sokogrump"
-	install -m755 "${srcdir}/../sokogrump.desktop" "${pkgdir}/usr/share/applications"
-	install -m644 "${srcdir}/../sokogrump.png" "${pkgdir}/usr/share/pixmaps"
-	sed -i 's/USERGOESHERE/'$USER'/g' "${pkgdir}/usr/share/applications/sokogrump.desktop"
+	install -m755 "${srcdir}/SokoGrump_Linux_x86/${pkgname}" "${pkgdir}/$HOME/.${pkgname}"
+	install -m755 "${srcdir}/SokoGrump_Linux_x86/SokoGrump.exe" "${pkgdir}/$HOME/.${pkgname}"
+	install -m755 "${srcdir}/../${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+	install -m644 "${srcdir}/../${pkgname}.png" "${pkgdir}/usr/share/pixmaps"
+	sed -i 's/USERGOESHERE/'$USER'/g' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	
-	cp -r "${srcdir}/SokoGrump_Linux_x86/Levels" "${pkgdir}/$HOME/.sokogrump"
-	cp -r "${srcdir}/SokoGrump_Linux_x86/Resources" "${pkgdir}/$HOME/.sokogrump"
+	cp -r "${srcdir}/SokoGrump_Linux_x86/Levels" "${pkgdir}/$HOME/.${pkgname}"
+	cp -r "${srcdir}/SokoGrump_Linux_x86/Resources" "${pkgdir}/$HOME/.${pkgname}"
 	
-	chown $USER "${pkgdir}/$HOME/.sokogrump"
+	chown $USER "${pkgdir}/$HOME/.${pkgname}"
 }
 

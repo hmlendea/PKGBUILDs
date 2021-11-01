@@ -1,10 +1,10 @@
 pkgname=gimp-data-extras
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Extra GIMP brushes, patterns, and the removed Alpha to Logo filters"
 arch=('any')
-url="https://github.com/GNOME/gimp-data-extras"
+url="https://github.com/GNOME/${pkgname}"
 license=('GPL2')
 groups=()
 depends_x86=('gimp')
@@ -18,18 +18,18 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/GNOME/gimp-data-extras/archive/GIMP_DATA_EXTRAS_2_0_4.tar.gz")
+source=("https://github.com/GNOME/${pkgname}/archive/GIMP_DATA_EXTRAS_2_0_4.tar.gz")
 noextract=()
-md5sums=('a0a86725a0079776ae8c9e11b364be24')
+sha512sums=('c5b47c3f626b99b8539bdf0afce66e57506d86e727f41f6bd9f9cc68248257b3072d753966248adcf7d6b4d7802b16e3b689c7959c65387a1d584b97358cb47a')
 validpgpkeys=()
 
 build() {
-    cd $srcdir/$pkgname-GIMP_DATA_EXTRAS_2_0_4
+    cd ${srcdir}/${pkgname}-GIMP_DATA_EXTRAS_2_0_4
     find -name *.am | xargs rm
 }
 
 package() {
-    cd $srcdir/$pkgname-GIMP_DATA_EXTRAS_2_0_4
+    cd ${srcdir}/${pkgname}-GIMP_DATA_EXTRAS_2_0_4
 
     mkdir -p "${pkgdir}/usr/share/gimp/2.0/"
 

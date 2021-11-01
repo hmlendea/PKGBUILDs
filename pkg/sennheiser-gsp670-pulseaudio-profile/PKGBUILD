@@ -1,10 +1,10 @@
 pkgname=sennheiser-gsp670-pulseaudio-profile
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Sennheiser GSP 670 PulseAudio profile"
 arch=('any')
-url="https://github.com/szszoke/sennheiser-gsp670-pulseaudio-profile"
+url="https://github.com/szszoke/${pkgname}"
 license=('custom')
 groups=()
 depends=('pulseaudio')
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/szszoke/sennheiser-gsp670-pulseaudio-profile/archive/1.2.tar.gz")
+source=("https://github.com/szszoke/${pkgname}/archive/1.2.tar.gz")
 noextract=()
-md5sums=('34faa8e34446a3d473add4855ce1dca6')
+sha512sums=('2fc762b3bdad3b010de50b5ffd7785c12bb58260cc98267cf9393799d0caf67f81d313cc084287e9ab0bf831c7a6bc3cfe341bd623ca29978c7bd66c47d21111')
 validpgpkeys=()
 
 build() {
