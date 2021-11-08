@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar /opt/MouseRecorder/MouseRecorder.jar
+java -jar /opt/mouse-recorder/MouseRecorder.jar
