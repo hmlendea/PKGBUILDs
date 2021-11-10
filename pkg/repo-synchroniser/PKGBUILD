@@ -1,0 +1,22 @@
+pkgname=repo-synchroniser
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Systemd unit for automatically synchronising the package repositories"
+arch=('any')
+url="https://github.com/hmlendea/arch-linux-${pkgname}"
+license=('GPL')
+install="${pkgname}.install"
+source=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}.zip")
+sha512sums=('a5efdfa87e8f6e4cdbc45b85ecdbac40a2540033b6587dedd7e88c1aeee35c8ce2e48d5e52484fef8fbf2c74a09abcc42067be369ba3339a34d71b0ec071d86e')
+
+package() {
+    local UNITS_DIR="/usr/lib/systemd/system"
+    local BIN_DIR="/usr/bin"
+
+    install -d -m755 "${pkgdir}/${UNITS_DIR}/"
+    install -d -m755 "${pkgdir}/${BIN_DIR}/"
+
+    install -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/${BIN_DIR}/${pkgname}"
+    install -m644 "${srcdir}/${pkgname}.service" "${pkgdir}/${UNITS_DIR}/"
+    install -m644 "${srcdir}/${pkgname}.timer" "${pkgdir}/${UNITS_DIR}/"
+}
