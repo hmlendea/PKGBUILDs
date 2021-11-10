@@ -1,35 +1,28 @@
 pkgname=sokogrump
-pkgver=1.0
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Sokoban-like puzzle game featuring the Grumpy Cat"
 arch=('any')
-url="https://github.com/HoratiuMl/${pkgname}"
+url="https://github.com/hmlendea/${pkgname}"
 license=('GPL')
-depends_i686=('mono')
 install=
-source=("https://github.com/HoratiuMl/${pkgname}/releases/download/1.0/SokoGrump_Linux_x86.tar.gz")
-sha512sums=('4ab616a85e3723d8bf98d16f5c43f06f481ab9f33cee0c8ccbe7ee3fc82a4fa4ce65302d491e34861ef92204ec20ef8366808d5bfb6b19569f47cee109033f4f')
-
-build() {
-    cd $srcdir
-    tar xf SokoGrump_Linux_x86.tar.gz
-}
+source=("https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux-x64.zip")
+sha512sums=('8c35b2769e9e2b9f859a5867d8beb09e370d79162af81636b10f3993c25468040e55d5a34dc3076dfaf8fd94bebe97fc8a577de199b5e3224a3ff297ad80f5dc')
 
 package() {
-	cd $srcdir
-	install -d "${pkgdir}/$HOME/.${pkgname}"
+	cd "${srcdir}"
+	install -d "${pkgdir}/${HOME}/.${pkgname}"
 	install -d "${pkgdir}/usr/share/applications"
 	install -d "${pkgdir}/usr/share/pixmaps"
 	
-	install -m755 "${srcdir}/SokoGrump_Linux_x86/${pkgname}" "${pkgdir}/$HOME/.${pkgname}"
-	install -m755 "${srcdir}/SokoGrump_Linux_x86/SokoGrump.exe" "${pkgdir}/$HOME/.${pkgname}"
+	install -m755 "${srcdir}/SokoGrump_Linux_x86/${pkgname}" "${pkgdir}/${HOME}/.${pkgname}"
+	install -m755 "${srcdir}/SokoGrump_Linux_x86/SokoGrump.exe" "${pkgdir}/${HOME}/.${pkgname}"
 	install -m755 "${srcdir}/../${pkgname}.desktop" "${pkgdir}/usr/share/applications"
 	install -m644 "${srcdir}/../${pkgname}.png" "${pkgdir}/usr/share/pixmaps"
-	sed -i 's/USERGOESHERE/'$USER'/g' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	sed -i 's/USERGOESHERE/'${USER}'/g' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	
-	cp -r "${srcdir}/SokoGrump_Linux_x86/Levels" "${pkgdir}/$HOME/.${pkgname}"
-	cp -r "${srcdir}/SokoGrump_Linux_x86/Resources" "${pkgdir}/$HOME/.${pkgname}"
+	cp -r "${srcdir}/SokoGrump_Linux_x86/Levels" "${pkgdir}/${HOME}/.${pkgname}"
+	cp -r "${srcdir}/SokoGrump_Linux_x86/Resources" "${pkgdir}/${HOME}/.${pkgname}"
 	
-	chown $USER "${pkgdir}/$HOME/.${pkgname}"
+	chown $USER "${pkgdir}/${HOME}/.${pkgname}"
 }
-
