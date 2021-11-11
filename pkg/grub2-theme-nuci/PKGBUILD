@@ -1,0 +1,26 @@
+pkgname=grub2-theme-nuci
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Personal GRUB2 theme based on Vimix"
+arch=('x86_64' 'i686')
+url="https://github.com/hmlendea/${pkgname}"
+license=('GPL')
+depends=('grub')
+source=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}.zip")
+sha512sums=('a6bac73fa3593b82471a9fa396b219abf0408ca881fdbae8b807ab9b9aaa49dca30729b2b1806862ffa664477726c6d6fbf8538da1d95cfcc3abc94754ce3885')
+
+package() {
+    local GRUB2_THEMES_DIR="/usr/share/grub/themes/Nuci"
+
+    install -d -m755 "${pkgdir}/${GRUB2_THEMES_DIR}/icons"
+
+    install -m644 "${srcdir}/Nuci/theme.txt" "${pkgdir}/${GRUB2_THEMES_DIR}/"
+
+    for asset in "${srcdir}/Nuci"/*.png; do
+        install -m644 "${asset}" "${pkgdir}/${GRUB2_THEMES_DIR}/"
+    done
+
+    for icon in "${srcdir}/Nuci/icons"/*.png; do
+        install -m644 "${icon}" "${pkgdir}/${GRUB2_THEMES_DIR}/icons/"
+    done
+}
