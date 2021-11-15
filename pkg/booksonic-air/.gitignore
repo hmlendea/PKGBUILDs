@@ -1,0 +1,3 @@
+*.war
+*.service
+booksonic-air-systemd-env
