@@ -1,11 +1,11 @@
 pkgname=mouse-recorder
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Record and replay your mouse and keyboard actions"
 arch=('any')
 url="https://github.com/eguller/MouseRecorder"
 license=('Unlicense')
-depends=('jre-openjdk')
+depends=('java-runtime-headless')
 install=
 source=(https://github.com/eguller/MouseRecorder/releases/download/v${pkgver}/MouseRecorder.jar)
 sha512sums=('e99904d8d3ab54fafdd3cb75597d2c1106a1d2ea2c4ec82a68597f1f16c73b6637533ae497017fb764e8fa4f55bd0cb993b056b84577c92df4992985cb602672')
