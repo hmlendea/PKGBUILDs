@@ -1,0 +1,44 @@
+pkgname=booksonic-air
+pkgver=2009.1.0
+pkgrel=1
+pkgdesc="Audiobook server based on Airsonic"
+arch=('any')
+url="https://github.com/popeen/${pkgname}"
+license=('GPL')
+depends=('java-runtime-headless' 'ttf-dejavu')
+backup=('etc/booksonic/booksonic.conf')
+noextract=(${pkgname}.war)
+source=("${url}/releases/download/v${pkgver}/booksonic.war"
+        "${pkgname}-systemd-env::https://raw.githubusercontent.com/airsonic/airsonic/release-10.6/contrib/airsonic.service"
+        "${pkgname}.service::https://raw.githubusercontent.com/airsonic/airsonic/release-10.6/contrib/airsonic.service"
+        "${pkgname}.sysusers"
+        "${pkgname}.tmpfiles")
+sha512sums=('ae861c2600c1c8a5411abc475d7d79b79539bbca462d9bba18bf697837d1a185b994d5ea6617aa811da895c7e5a4d5c0425caec2a1507e69b7f041c7bf0c463d'
+            '1244724dbd6acf5a2140101cab6b420563feb53e310b31b0f07b267566f1a6a17076be34ca0f1a14f95eb935073bfa9e66fb5bf589de52cc1218e23d9034462e'
+            '05e85379fbaab8bed95a9b16626e21dce625c8bea42e84361dc5c6c369645938bedd7adcccbbac34f2331b8e434f102d7302d631186c0784b5c7a49f554e4d31'
+            '5e31e87475ee3276013c5c1b74ffd464317ed22944f80b545530fbb36ffe163a429d696b9bcc944ed8c2692da016d82345012f60f1956cdd91c19c1dfa9b69ff'
+            '7a6c179629582003ef2a41ee2aa5111b3a2ec051e5b4ea901dc02a9c5c4c206149d5922c7f47df20a2e17d77323b16c26a78a901494ff90c6ba488c9904ea2dc')
+
+package() {
+    install -d -m755 "${pkgdir}/usr/lib/${pkgname}"
+    install -d -m755 "${pkgdir}/usr/lib/${pkgname}/playlists"
+    install -d -m755 "${pkgdir}/usr/lib/systemd/system"
+    install -d -m755 "${pkgdir}/etc/${pkgname}"
+
+    for FILE in "${srcdir}/${pkgname}.service" "${pkgname}-systemd-env"; do
+        sed -i 's/^Description=.*$/Description=Booksonic Media Server/g' "${FILE}"
+        sed -i 's/AIRSONIC_HOME/BOOKSONIC_HOME/g' "${FILE}"
+        sed -i 's/ airsonic / booksonic /g' "${FILE}"
+        sed -i 's/airsonic.war/'"${pkgname}"'.war/g' "${FILE}"
+        sed -i 's/CONTEXT_PATH=\/airsonic/CONTEXT_PATH=booksonic/g' "${FILE}"
+        sed -i 's/=airsonic$/=booksonic/g' "${FILE}"
+        sed -i 's/\/var\/airsonic/\/usr\/lib\/'"${pkgname}"'/g' "${FILE}"
+        sed -i 's/\/etc\/sysconfig\/airsonic/\/etc\/'"${pkgname}"'\/'"${pkgname}"'.conf/' "${FILE}"
+    done
+  
+    install -m644 "${srcdir}/booksonic.war" "${pkgdir}/usr/lib/${pkgname}/${pkgname}.war"
+    install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${srcdir}/${pkgname}-systemd-env" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
+    install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+}
