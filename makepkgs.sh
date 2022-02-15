@@ -8,20 +8,9 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 cd "$DIR"
 
-REPONAME="hmlendea"
 REPODIR="${DIR}/repo"
-REPODB="${REPODIR}/${REPONAME}.db"
 
 [ ! -d "${REPODIR}" ] && mkdir "${REPODIR}"
-if [ -f "${REPODB}" ]; then
-    echo "Cleaning the current repository database"
-
-    rm "${REPODB}"
-    rm "${REPODB}.tar.gz"
-    rm "${REPODIR}/${REPONAME}.files"
-    rm "${REPODIR}/${REPONAME}.files.tar.gz"
-fi
-
 for PKGDIR in ${DIR}/pkg/*; do
     if [ ! -f "${PKGDIR}/PKGBUILD" ]; then
         continue
@@ -61,17 +50,33 @@ for PKGDIR in ${DIR}/pkg/*; do
     done
 done
 
-for PKGFILE in ${REPODIR}/*.pkg.tar.zst; do
-    echo "Registering ${PKGFILE}"
-    repo-add "${REPODB}.tar.gz" "${PKGFILE}"
+REPO_NAME="hmlendea"
+
+for ARCH in "any" "aarch64" "armv7h" "i686" "x86_64"; do
+    REPODB_NAME="${REPO_NAME}-${ARCH}"
+    REPODB_PATH="${REPODIR}/${REPODB_NAME}.db"
+
+    if [ -f "${REPODB_PATH}" ]; then
+        echo "Cleaning the current repository database"
+
+        rm "${REPODB_PATH}"
+        rm "${REPODB_PATH}.tar.gz"
+        rm "${REPODIR}/${REPODB_NAME}.files"
+        rm "${REPODIR}/${REPODB_NAME}.files.tar.gz"
+    fi
+
+    for PKGFILE in ${REPODIR}/*-${ARCH}.pkg.tar.zst; do
+        echo "Registering ${PKGFILE} into ${REPODB_NAME}"
+        repo-add "${REPODB_PATH}.tar.gz" "${PKGFILE}"
+    done
+
+    rm "${REPODB_PATH}"
+    cp "${REPODB_PATH}.tar.gz" "${REPODB_PATH}"
+
+    if [ -f "${REPODB_PATH}.tar.gz.old" ]; then
+        rm "${REPODB_PATH}.tar.gz.old"
+        rm "${REPODIR}/${REPODB_NAME}.files.tar.gz.old"
+    fi
 done
-
-rm "${REPODB}"
-cp "${REPODB}.tar.gz" "${REPODB}"
-
-if [ -f "${REPODB}.tar.gz.old" ]; then
-    rm "${REPODB}.tar.gz.old"
-    rm "${REPODIR}/${REPONAME}.files.tar.gz.old"
-fi
 
 echo "Recommended release tag: " $(date +%Y-%m-%d_%H-%M-%S)
