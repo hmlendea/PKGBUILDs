@@ -55,7 +55,7 @@ for PKGDIR in ${DIR}/pkg/*; do
     done
 
     # Remove the builds for architectures that are not supported in the current version
-    for REPO_PACKAGE in $(find repo/ -name "${PKGID}-*" | grep -v "\(${PKGARCHES// /\\\|}\).pkg.tar.zst"); do
+    for REPO_PACKAGE in $(find "${REPODIR}" -name "${PKGID}-*" | grep -v "\(${PKGARCHES// /\\\|}\).pkg.tar.zst"); do
         echo "Removing ${REPO_PACKAGE}..."
         rm "${REPO_PACKAGE}"
     done
