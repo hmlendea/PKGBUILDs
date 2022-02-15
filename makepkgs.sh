@@ -54,6 +54,9 @@ REPO_NAME="hmlendea"
 
 for ARCH in "any" "aarch64" "armv7h" "i686" "x86_64"; do
     REPODB_NAME="${REPO_NAME}-${ARCH}"
+
+    [ "${ARCH}" == "any" ] && REPODB_NAME="${REPO_NAME}"
+    
     REPODB_PATH="${REPODIR}/${REPODB_NAME}.db"
 
     if [ -f "${REPODB_PATH}" ]; then
