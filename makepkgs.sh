@@ -30,22 +30,34 @@ for PKGDIR in ${DIR}/pkg/*; do
     PKGNAME=$(cat "${PKGDIR}/PKGBUILD" | grep "^pkgname=" | awk -F'=' '{print $2}')
     PKGVER=$(cat "${PKGDIR}/PKGBUILD" | grep "^pkgver=" | awk -F'=' '{print $2}')
     PKGREL=$(cat "${PKGDIR}/PKGBUILD" | grep "^pkgrel=" | awk -F'=' '{print $2}')
+    PKGARCHES=$(grep "^arch=" "${PKGDIR}/PKGBUILD" | sed -e 's/^arch=//g' -e 's/[\(\)]//g' -e 's/'\''//g')
 
     PKGID="${PKGNAME}-${PKGVER}-${PKGREL}"
 
-    for PKGARCH in $(grep "^arch=" "${PKGDIR}/PKGBUILD" | sed -e 's/^arch=//g' -e 's/[\(\)]//g' -e 's/'\''//g'); do
-        if [ ! -f "${REPODIR}/${PKGID}-${PKGARCH}.pkg.tar.zst" ]; then
+    for PKGARCH in ${PKGARCHES}; do
+        PACKAGE_FILE_NAME="${PKGID}-${PKGARCH}.pkg.tar.zst"
+
+        if [ ! -f "${REPODIR}/${PACKAGE_FILE_NAME}" ]; then
             echo "Making ${PKGID} for ${PKGARCH}..."
             cd "${PKGDIR}"
             CARCH="${PKGARCH}" makepkg -Csrf --noconfirm
 
-            if [ -f "${REPODIR}/${PKGNAME}-${PKGARCH}.pkg.tar.zst" ]; then
-                echo "Removing the old versions of ${PKGNAME}-${PKGARCH}..."
-                rm "${REPODIR}/${PKGNAME}-${PKGARCH}.pkg.tar.zst"
-            fi
+            [ -f "${REPODIR}/${PACKAGE_FILE_NAME}" ] && rm "${REPODIR}/${PACKAGE_FILE_NAME}"
 
-            cp "${PKGDIR}/${PKGID}-${PKGARCH}.pkg.tar.zst" "${REPODIR}/"
+            cp "${PKGDIR}/${PACKAGE_FILE_NAME}" "${REPODIR}/${PACKAGE_FILE_NAME}"
         fi
+    done
+
+    # Remove the builds for other versions
+    for REPO_PACKAGE in $(find "${REPODIR}" -name "${PKGNAME}-*" | grep -v "/${PKGID}"); do
+        echo "Removing ${REPO_PACKAGE}..."
+        rm "${REPO_PACKAGE}"
+    done
+
+    # Remove the builds for architectures that are not supported in the current version
+    for REPO_PACKAGE in $(find repo/ -name "${PKGID}-*" | grep -v "\(${PKGARCHES// /\\\|}\).pkg.tar.zst"); do
+        echo "Removing ${REPO_PACKAGE}..."
+        rm "${REPO_PACKAGE}"
     done
 done
 
