@@ -33,22 +33,20 @@ for PKGDIR in ${DIR}/pkg/*; do
 
     PKGID="${PKGNAME}-${PKGVER}-${PKGREL}"
 
-    # TODO: Support other architectures
-    if [ ! -f "${REPODIR}/${PKGID}-any.pkg.tar.zst" ] &&
-       [ ! -f "${REPODIR}/${PKGID}-x86_64.pkg.tar.zst" ]; then
-        echo "Making ${PKGID}..."
-        cd "${PKGDIR}"
-        makepkg -Csrf --noconfirm
+    for PKGARCH in $(grep "^arch=" "${PKGDIR}/PKGBUILD" | sed -e 's/^arch=//g' -e 's/[\(\)]//g' -e 's/'\''//g'); do
+        if [ ! -f "${REPODIR}/${PKGID}-${PKGARCH}.pkg.tar.zst" ]; then
+            echo "Making ${PKGID} for ${PKGARCH}..."
+            cd "${PKGDIR}"
+            CARCH="${PKGARCH}" makepkg -Csrf --noconfirm
 
-        if [ -f ${REPODIR}/${PKGNAME}-*.pkg.tar.zst ]; then
-            echo "Removing the old versions of ${PKGNAME}..."
-            rm ${REPODIR}/${PKGNAME}-*.pkg.tar.zst
+            if [ -f "${REPODIR}/${PKGNAME}-${PKGARCH}.pkg.tar.zst" ]; then
+                echo "Removing the old versions of ${PKGNAME}-${PKGARCH}..."
+                rm "${REPODIR}/${PKGNAME}-${PKGARCH}.pkg.tar.zst"
+            fi
+
+            cp "${PKGDIR}/${PKGID}-${PKGARCH}.pkg.tar.zst" "${REPODIR}/"
         fi
-
-        for PKGFILE in ${PKGDIR}/${PKGID}-*.pkg.tar.zst; do
-            cp ${PKGFILE} "${REPODIR}/"
-        done
-    fi
+    done
 done
 
 for PKGFILE in ${REPODIR}/*.pkg.tar.zst; do
