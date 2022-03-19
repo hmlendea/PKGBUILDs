@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=SokoGrump
 Type=Application
-Exec=/home/USERGOESHERE/.sokogrump/SokoGrump.exe
+Exec=sokogrump
 Icon=sokogrump
 StartupWMClass=SokoGrump
 Categories=Game;
