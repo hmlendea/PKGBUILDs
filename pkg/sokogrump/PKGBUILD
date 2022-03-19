@@ -1,6 +1,6 @@
 pkgname=sokogrump
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Sokoban-like puzzle game featuring the Grumpy Cat"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/hmlendea/${pkgname}"
@@ -20,7 +20,7 @@ package() {
 	install -d "${pkgdir}/usr/share/pixmaps"
 
 	cp -r "${srcdir}"/* "${pkgdir}/var/lib/${pkgname}/"
-	cp -r "${srcdir}"/*.a "${pkgdir}/var/lib/${pkgname}/"
+    [ -f "${srcdir}"/*.a ] && cp -r "${srcdir}"/*.a "${pkgdir}/var/lib/${pkgname}/"
 	install -m755 "${srcdir}/../${pkgname}.sh" "${pkgdir}/usr/bin/sokogrump"
 	install -m755 "${srcdir}/../${pkgname}.desktop" "${pkgdir}/usr/share/applications"
 	install -m644 "${srcdir}/../${pkgname}.png" "${pkgdir}/usr/share/pixmaps"
