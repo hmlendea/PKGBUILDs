@@ -1,28 +1,27 @@
 pkgname=sokogrump
 pkgver=2.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Sokoban-like puzzle game featuring the Grumpy Cat"
-arch=('any')
+arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/hmlendea/${pkgname}"
 license=('GPL')
+depends=('mono' 'gtk-sharp-2')
 install=
-source=("https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux-x64.zip")
-sha512sums=('8c35b2769e9e2b9f859a5867d8beb09e370d79162af81636b10f3993c25468040e55d5a34dc3076dfaf8fd94bebe97fc8a577de199b5e3224a3ff297ad80f5dc')
+source=(https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux-$(echo ${CARCH} | sed \
+                                                                                                    -e 's/aarch64/arm64/g' \
+                                                                                                    -e 's/armv7h/arm/g' \
+                                                                                                    -e 's/x86_64/x64/g').zip)
+sha512sums=('SKIP')
 
 package() {
-	cd "${srcdir}"
-	install -d "${pkgdir}/${HOME}/.${pkgname}"
+	install -d "${pkgdir}/var/lib/${pkgname}"
+	install -d "${pkgdir}/usr/bin"
 	install -d "${pkgdir}/usr/share/applications"
 	install -d "${pkgdir}/usr/share/pixmaps"
-	
-	install -m755 "${srcdir}/SokoGrump_Linux_x86/${pkgname}" "${pkgdir}/${HOME}/.${pkgname}"
-	install -m755 "${srcdir}/SokoGrump_Linux_x86/SokoGrump.exe" "${pkgdir}/${HOME}/.${pkgname}"
+
+	cp -r "${srcdir}"/* "${pkgdir}/var/lib/${pkgname}/"
+	cp -r "${srcdir}"/*.a "${pkgdir}/var/lib/${pkgname}/"
+	install -m755 "${srcdir}/../${pkgname}.sh" "${pkgdir}/usr/bin/sokogrump"
 	install -m755 "${srcdir}/../${pkgname}.desktop" "${pkgdir}/usr/share/applications"
 	install -m644 "${srcdir}/../${pkgname}.png" "${pkgdir}/usr/share/pixmaps"
-	sed -i 's/USERGOESHERE/'${USER}'/g' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	
-	cp -r "${srcdir}/SokoGrump_Linux_x86/Levels" "${pkgdir}/${HOME}/.${pkgname}"
-	cp -r "${srcdir}/SokoGrump_Linux_x86/Resources" "${pkgdir}/${HOME}/.${pkgname}"
-	
-	chown $USER "${pkgdir}/${HOME}/.${pkgname}"
 }
