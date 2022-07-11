@@ -1,5 +1,5 @@
 pkgname=hori-fonts
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Hori's fonts collection"
 arch=('any')
@@ -12,6 +12,7 @@ source=('https://dl.dafont.com/dl/?f=hesperides'
         'https://dl.dafont.com/dl/?f=planewalker'
         'https://dl.dafont.com/dl/?f=soviet_style'
         'https://www.cufonfonts.com/download/font-family/213e361cf3417732da43ecc322222277/segoe-script'
+        'https://www.cufonfonts.com/download/font-family/2943b35031a90c4010a8024328f7580e/fredericka-the-great'
         'https://raw.githubusercontent.com/ThinkDualBrain/Protomolecule/master/Protomolecule.otf')
 sha512sums=('33d9ac7df86e7b69a1b71a7db5e94f6241c685f29b53819774cff76a00be5388df688dea26d29423ad652bd1bfc7b86b211147c2cff9d7e0d6e2ece017a4404d'
             '3c78a99eeb17ace573f2ddee0fa066b1aa5efab81ad80c4f6af0cb97bef4036243e7a6c9e7f0d0fdba6acf4ad6e07c1878f6fc167256ee6d3e7ee2ad03f2dbbb'
@@ -19,11 +20,13 @@ sha512sums=('33d9ac7df86e7b69a1b71a7db5e94f6241c685f29b53819774cff76a00be5388df6
             '2303133d3b5cab2b5a0749555206f30ae91a3fb5aaa7255d8799085ea371698770e6ed13c56ce89a1059640b44762b6f9ebd72513b41cb1ca95dd5533c7ead8c'
             '7065c831dd6768b7bada688294de1332df09eff0337a37874651dbba405aaaf6c3db44db15c585626e2989f9a74d9a95c4353df8ad3f10b0b32748379d7266a3'
             '5899a0ce670a0d72af01255a21a50b4b75f168158f1098707fdcd557340b28740db7156f62308e8dfa9cb2af9ff988db7e77a6d0ed554c5ce842978a803bf919'
+            '03831346ddff86a55c2c669a2d6baea44b07862aff30b1f0a79e8a85c985d74677de637e70d79bd7e3c37d1bc444647af42605eb51f76f31de2fcefff4068306'
             '94707be84b6b39e84e326d5af5969f28c8b19412afff12b833464dfeebe6fc9c43cbc5e7976f26798d236e6a96d1f46db799b0546c35ead73f5dc8f7de32f238')
 
 package() {
 	install -d "${pkgdir}/usr/share/fonts/${pkgname}/"
 
+	install -m644 "${srcdir}/FrederickatheGreat-Regular.ttf" "${pkgdir}/usr/share/fonts/${pkgname}/Fredericka the Great Regular.ttf"
 	install -m644 "${srcdir}/HESPD___.TTF" "${pkgdir}/usr/share/fonts/${pkgname}/Hesperides.ttf"
 	install -m644 "${srcdir}/OptimusPrinceps.ttf" "${pkgdir}/usr/share/fonts/${pkgname}/Optimus Princeps.ttf"
 	install -m644 "${srcdir}/oblivion-font.ttf" "${pkgdir}/usr/share/fonts/${pkgname}/Oblivion.ttf"
