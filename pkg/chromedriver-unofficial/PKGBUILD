@@ -1,16 +1,15 @@
 pkgname=chromedriver-unofficial
 pkgver=102.0.5005.148
 _electronver=19.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron's unofficial version of chromedriver, with support for extra CPU architectures"
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/hmlendea/${pkgname}"
 license=('MIT')
 install=
 source=(https://github.com/electron/electron/releases/download/v${_electronver}/chromedriver-v${_electronver}-linux-$(echo ${CARCH} | sed \
                                                                                                     -e 's/aarch64/arm64/g' \
                                                                                                     -e 's/armv7h/armv7l/g' \
-                                                                                                    -e 's/i686/ia32/g' \
                                                                                                     -e 's/x86_64/x64/g').zip)
 sha512sums=('SKIP')
 
