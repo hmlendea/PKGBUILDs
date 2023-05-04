@@ -1,7 +1,7 @@
 pkgname=chromedriver-unofficial
-pkgver=102.0.5005.148
-_electronver=19.0.8
-pkgrel=2
+pkgver=112.0.5615.165
+_electronver=24.2.0
+pkgrel=1
 pkgdesc="Electron's unofficial version of chromedriver, with support for extra CPU architectures"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/hmlendea/${pkgname}"
