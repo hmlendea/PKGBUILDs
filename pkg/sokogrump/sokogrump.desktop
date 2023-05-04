@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=SokoGrump
-Type=Application
-Exec=sokogrump
-Icon=sokogrump
-StartupWMClass=SokoGrump
-Categories=Game;
