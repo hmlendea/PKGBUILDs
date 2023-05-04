@@ -1,6 +1,6 @@
 pkgname=chromedriver-unofficial
-pkgver=104.0.5112.81
-_electronver=20.0.1
+pkgver=112.0.5615.165
+_electronver=24.2.0
 pkgrel=1
 pkgdesc="Electron's unofficial version of chromedriver, with support for extra CPU architectures"
 arch=('aarch64' 'armv7h' 'x86_64')
