@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=PolyGlot
+StartupWMClass=org-darisadesigns-polyglotlina-PolyGlot
+NoDisplay=false
+Categories=Application;Education;
+Icon=/opt/polyglot/lib/PolyGlot.png
+Exec=/opt/polyglot/bin/PolyGlot %U
