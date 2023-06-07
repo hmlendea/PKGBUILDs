@@ -1,0 +1,25 @@
+pkgname=polyglot
+pkgver=3.5.1
+pkgrel=1
+pkgdesc="Constructed language construction toolkit"
+arch=('x86_64')
+url="https://github.com/DraqueT/PolyGlot"
+license=('MIT')
+depends=()
+install=
+source=(${url}/releases/download/${pkgver}/PolyGlot-Ins-Lin.deb)
+sha512sums=('356900fb643e2336e12f8898ea86f8489d9b35bf03ac7df96f691c8141c4ead706df0521a60bd5633bd0d29c91663c4b78ee4d011da79e6174fa33f42005ffe6')
+
+prepare() {
+    tar -xvf "data.tar.xz"
+}
+
+package() {
+	install -d "${pkgdir}/opt"
+	install -d "${pkgdir}/usr/bin"
+	install -d "${pkgdir}/usr/share/applications"
+
+    cp -rf "${srcdir}/opt/polyglot-linear-a" "${pkgdir}/opt/${pkgname}"
+    install -m755 "${srcdir}/../${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -m755 "${srcdir}/../org.dariasdesigns.polyglotlina.PolyGlot.desktop" "${pkgdir}/usr/share/applications"
+}
