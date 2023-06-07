@@ -6,6 +6,7 @@ repo/
 ### Package files
 
 # Archives
+pkg/*/*.deb
 pkg/*/*.zip
 pkg/*/*.zip.part
 pkg/*/*.zst
