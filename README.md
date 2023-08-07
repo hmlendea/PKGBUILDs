@@ -27,13 +27,6 @@ Server = https://github.com/hmlendea/PKGBUILDs/releases/latest/download/
 SigLevel = PackageOptional
 ```
 
-**`armv7h` architecture:**
-```ini
-[hmlendea-armv7h]
-Server = https://github.com/hmlendea/PKGBUILDs/releases/latest/download/
-SigLevel = PackageOptional
-```
-
 **`i686` architecture:**
 ```ini
 [hmlendea-i686]
