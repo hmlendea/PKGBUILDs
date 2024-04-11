@@ -1,6 +1,6 @@
 pkgname=hori-fonts
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hori's fonts collection"
 arch=('any')
 url=""
@@ -12,8 +12,8 @@ source=('https://dl.dafont.com/dl/?f=hesperides'
         'https://dl.dafont.com/dl/?f=planewalker'
         'https://dl.dafont.com/dl/?f=promised_freedom'
         'https://dl.dafont.com/dl/?f=soviet_style'
-        'https://www.cufonfonts.com/download/font-family/213e361cf3417732da43ecc322222277/segoe-script'
-        'https://www.cufonfonts.com/download/font-family/2943b35031a90c4010a8024328f7580e/fredericka-the-great'
+        'https://www.fontles.com/download/segoe-script-font'
+        'https://www.1001fonts.com/download/fredericka-the-great.zip'
         'https://raw.githubusercontent.com/ThinkDualBrain/Protomolecule/master/Protomolecule.otf')
 sha512sums=('33d9ac7df86e7b69a1b71a7db5e94f6241c685f29b53819774cff76a00be5388df688dea26d29423ad652bd1bfc7b86b211147c2cff9d7e0d6e2ece017a4404d'
             '3c78a99eeb17ace573f2ddee0fa066b1aa5efab81ad80c4f6af0cb97bef4036243e7a6c9e7f0d0fdba6acf4ad6e07c1878f6fc167256ee6d3e7ee2ad03f2dbbb'
@@ -21,8 +21,8 @@ sha512sums=('33d9ac7df86e7b69a1b71a7db5e94f6241c685f29b53819774cff76a00be5388df6
             '2303133d3b5cab2b5a0749555206f30ae91a3fb5aaa7255d8799085ea371698770e6ed13c56ce89a1059640b44762b6f9ebd72513b41cb1ca95dd5533c7ead8c'
             'f29f20fb965af90c0164b3a811da383e4310265788a1262761912fd94ffbdd5de3f51c5f4f7f560e791f27f59b010fc142e26d790608154b6c782548d376dde1'
             '49eddf30f4152316f4bab2830ff56b3df43f3d33ee6995ce164e298349c5085266b432909ada7e571de1fbee4b32fe62e2313e7d3d58f8a8709658809a68ea12'
-            '5899a0ce670a0d72af01255a21a50b4b75f168158f1098707fdcd557340b28740db7156f62308e8dfa9cb2af9ff988db7e77a6d0ed554c5ce842978a803bf919'
-            '03831346ddff86a55c2c669a2d6baea44b07862aff30b1f0a79e8a85c985d74677de637e70d79bd7e3c37d1bc444647af42605eb51f76f31de2fcefff4068306'
+            '88b7dcdfe32f9a5c57b3088f512ecc881ce478aa2d4ae6db1484b65fd6c84e597f15b10d0b7b42b64c0a523cefb9a0023641e08ee94ec08db1b5c260909e1c4a'
+            '445a13824c7793dcd0db8f80ee2ac46a8c69747ceee42bfede9dc6b498a4b6248747f25002085391991a9eae54bde90563410729dca753b7734fa01b75fc39bd'
             '94707be84b6b39e84e326d5af5969f28c8b19412afff12b833464dfeebe6fc9c43cbc5e7976f26798d236e6a96d1f46db799b0546c35ead73f5dc8f7de32f238')
 
 package() {
@@ -36,5 +36,5 @@ package() {
 	install -m644 "${srcdir}/Promised Freedom.ttf" "${pkgdir}/usr/share/fonts/${pkgname}/Promised Freedom.ttf"
 	install -m644 "${srcdir}/Protomolecule.otf" "${pkgdir}/usr/share/fonts/${pkgname}/Protomolecule.otf"
     install -m644 "${srcdir}/SovietStyle-Regular.ttf" "${pkgdir}/usr/share/fonts/${pkgname}/Soviet Style.ttf"
-	install -m644 "${srcdir}/Segoe Script.ttf" "${pkgdir}/usr/share/fonts/${pkgname}/Segoe Script.ttf"
+	install -m644 "${srcdir}/Segoe-Script_39954.ttf" "${pkgdir}/usr/share/fonts/${pkgname}/Segoe Script.ttf"
 }
