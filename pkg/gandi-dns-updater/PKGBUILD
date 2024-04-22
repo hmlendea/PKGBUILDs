@@ -1,0 +1,24 @@
+pkgname=gandi-dns-updater
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="CLI utility for updating Gandi.net DNS records"
+arch=('any')
+url="https://github.com/hmlendea/${pkgname}"
+license=('GPL')
+depends=('curl')
+optdepends=('bind: For IP address detection'
+            'iputils: For IP address detection')
+install=
+source=(https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/${pkgname}.sh)
+sha512sums=('6edd982a60ed742306afe69078bd838a9cdfcc1678dee662381224705d0895ba959a5e351886f726cbe32e748ce5553f5c08e8224514460e50fe65d889f194d0')
+
+package() {
+	install -d "${pkgdir}/etc/${pkgname}"
+	install -d "${pkgdir}/usr/bin"
+	install -d "${pkgdir}/usr/lib/systemd/system"
+
+	install -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+	install "${srcdir}/../${pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
+	install "${srcdir}/../${pkgname}@.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.timer"
+	touch "${pkgdir}/etc/${pkgname}/api-key"
+}
