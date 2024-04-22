@@ -1,0 +1,10 @@
+[Unit]
+Description=Update the Gandi.net DNS record (%i)
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/gandi-dns-updater %i
+
+[Install]
+WantedBy=multi-user.target

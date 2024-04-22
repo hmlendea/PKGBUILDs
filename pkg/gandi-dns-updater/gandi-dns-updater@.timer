@@ -1,0 +1,9 @@
+[Unit]
+Description=Update the Gandi.net DNS record (%i) periodically
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=multi-user.target
