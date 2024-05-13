@@ -1,5 +1,5 @@
 pkgname=gandi-dns-updater
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="CLI utility for updating Gandi.net DNS records"
 arch=('any')
@@ -10,7 +10,7 @@ optdepends=('bind: For IP address detection'
             'iputils: For IP address detection')
 install=
 source=(https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/${pkgname}.sh)
-sha512sums=('6edd982a60ed742306afe69078bd838a9cdfcc1678dee662381224705d0895ba959a5e351886f726cbe32e748ce5553f5c08e8224514460e50fe65d889f194d0')
+sha512sums=('474476e1ab674bf3833195ba52e6dfa2d7e591118adbad7ccca9e8b4cb1159b5538fb4215d881aded7398574bbfb19be4d943555414780237cc8f65022204ffc')
 
 package() {
 	install -d "${pkgdir}/etc/${pkgname}"
