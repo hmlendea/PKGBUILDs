@@ -5,7 +5,7 @@ pkgdesc="CLI utility for updating Gandi.net DNS records"
 arch=('any')
 url="https://github.com/hmlendea/${pkgname}"
 license=('GPL')
-depends=('curl')
+depends=('curl' 'jq')
 optdepends=('bind: For IP address detection'
             'iputils: For IP address detection')
 install=
