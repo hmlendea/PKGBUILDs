@@ -1,5 +1,5 @@
 # PKGBUILDs
-Horațiu Mlendea's Arch Linux repository
+Personal Arch Linux repository.
 
 # Installation
 
