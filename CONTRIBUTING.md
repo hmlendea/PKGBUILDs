@@ -89,6 +89,10 @@ bash makepkgs.sh
 - Follow the documentation style guide.
 - Preview changes locally if possible.
 
+## 📋 Code of Conduct
+
+This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
+
 ## ❓ Getting Assistance
 
 - [Open an issue](https://github.com/hmlendea/PKGBUILDs/issues)
