@@ -5,17 +5,26 @@
 
 Personal Arch Linux package repository, providing custom and unofficial packages for everyday use.
 
-## ✨ Features
+## 📑 Table of Contents
 
-- `chromedriver-unofficial`: Electron's unofficial version of chromedriver, with support for extra CPU architectures
-- `gandi-dns-updater`: CLI utility for updating Gandi.net DNS records
+- [Packages](#packages)
+- [Usage](#usage)
+  - [Main repository](#main-repository)
+  - [Extra architectures](#extra-architectures)
+- [Development](#development)
+  - [Requirements](#requirements)
+  - [Build](#build)
+- [Project Structure](#project-structure)
+- [Privacy and Data](#privacy-and-data)
+- [Contributing](#contributing)
+- [Support](#support)
+
+## 📦 Packages
+
 - `grub2-theme-nuci`: Personal GRUB2 theme based on Vimix
 - `hori-fonts`: Hori's fonts collection
 - `image-optimiser`: Optimises image files for maximum lossless compression
-- `mouse-recorder`: Records and replays mouse and keyboard actions
-- `optiprime`: Starts applications using an optimised primusrun
 - `plex-video-optimiser`: Optimises video files for direct streaming to most devices via Plex
-- `steam-start`: Launches Steam with compatibility fixes and support for Nvidia OPTIMUS
 
 ## 🚀 Usage
 
@@ -73,6 +82,10 @@ bash makepkgs.sh
 | Directory | Purpose |
 |-----------|---------|
 | `pkg/` | Contains one subdirectory per package, each with a `PKGBUILD` and any supplementary files |
+
+## 🛡️ Privacy and Data
+
+This repository does not collect, process, transmit, or persist user data, analytics, diagnostics, or telemetry. The packages and build scripts do not handle personal data. For details, see [PRIVACY.md](PRIVACY.md).
 
 ## 🤝 Contributing
 
