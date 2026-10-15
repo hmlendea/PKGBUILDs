@@ -59,6 +59,9 @@ for ARCH in "any" "aarch64" "i686" "x86_64"; do
 
     REPODB_PATH="${REPODIR}/${REPODB_NAME}.db"
 
+    PKG_COUNT=$(find "${REPODIR}" -maxdepth 1 -name "*-${ARCH}.pkg.tar.zst" | wc -l)
+    [ "${PKG_COUNT}" -eq 0 ] && continue
+
     if [ -f "${REPODB_PATH}" ]; then
         echo "Cleaning the current repository database"
 
