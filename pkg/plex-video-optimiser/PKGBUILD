@@ -1,5 +1,5 @@
 pkgname=plex-video-optimiser
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=0
 pkgdesc="Optimises video files for direct streaming to most devices using Plex"
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('mkvtoolnix-cli' 'ffmpeg' 'perl-rename' 'glibc')
 install=
 source=(https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/${pkgname}.sh)
-sha512sums=('4fca849424317ea71cc1c926429af6c46cb44854ee3656eb69829a7695b4839326169d4f639e3f0dc1ec75f124489507df3809f1d20f7578615522308535d2b2')
+sha512sums=('f75ea0e46cfb543f802717c0a466ed8a7af44dfe0e4444f88f0d4557450a1da6a0fd67017ee48ca7215356ec9425d6214c20c1695f6ab699a3294be2898c22ec')
 
 package() {
 	install -d "${pkgdir}/usr/bin"
