@@ -89,9 +89,15 @@ This repository does not collect, process, transmit, or persist user data, analy
 
 ## 🤝 Contributing
 
-Contributions are welcome. Please:
-- Keep the pull requests focused and consistent with the existing code style
-- Update the documentation when behaviour changes
+You are welcome to submit any suggestion, feedback, or modification to this project.
+
+When doing so, please:
+- Submit focused pull requests that conform to the existing code style
+- Maintain your branch synchronised with `master`
+- Revise the documentation when functionality changes
+- Raise a new [issue](https://github.com/hmlendea/PKGBUILDs/issues) for problems or suggestions
+
+See the [contributing guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
 
 ## 💝 Support
 
