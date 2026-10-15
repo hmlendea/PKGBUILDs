@@ -7,24 +7,28 @@ Personal Arch Linux package repository, providing custom and unofficial packages
 
 ## 📑 Table of Contents
 
-- [Packages](#packages)
+- [Capabilities](#capabilities)
 - [Usage](#usage)
   - [Main repository](#main-repository)
   - [Extra architectures](#extra-architectures)
+- [Installation](#installation)
+  - [GitHub Releases](#github-releases)
 - [Development](#development)
   - [Requirements](#requirements)
   - [Build](#build)
 - [Project Structure](#project-structure)
 - [Privacy and Data](#privacy-and-data)
 - [Contributing](#contributing)
+- [Code of Conduct](#code-of-conduct)
 - [Support](#support)
 
-## 📦 Packages
+## ✨ Capabilities
 
-- `grub2-theme-nuci`: Personal GRUB2 theme based on Vimix
-- `hori-fonts`: Hori's fonts collection
-- `image-optimiser`: Optimises image files for maximum lossless compression
-- `plex-video-optimiser`: Optimises video files for direct streaming to most devices via Plex
+- Provides custom and unofficial Arch Linux packages via a personal repository
+- Supports multiple architectures: `any`, `aarch64`, `i686`, `x86_64`
+- Automated package building and repository database generation
+- Packages distributed via GitHub Releases for direct `pacman` consumption
+- **Packages:** `grub2-theme-nuci`, `hori-fonts`, `image-optimiser`, `plex-video-optimiser`
 
 ## 🚀 Usage
 
@@ -63,6 +67,17 @@ SigLevel = PackageOptional
 [hmlendea-x86_64]
 Server = https://github.com/hmlendea/PKGBUILDs/releases/latest/download/
 SigLevel = PackageOptional
+```
+
+## 📦 Installation
+
+### GitHub Releases
+
+Packages are published as GitHub Releases. Add the appropriate repository configuration above to `/etc/pacman.conf`, then install packages with `pacman`:
+
+```bash
+pacman -Syu
+pacman -S grub2-theme-nuci hori-fonts image-optimiser plex-video-optimiser
 ```
 
 ## 🛠️ Development
