@@ -1,16 +1,17 @@
 pkgname=image-optimiser
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Optimises image files for maximum lossless compression"
 arch=('any')
 url="https://github.com/hmlendea/${pkgname}"
 license=('GPL')
 depends=('jpegoptim' 'oxipng')
+optdepends=('zopfli: Alternative PNG compression')
 install=
-source=(https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/${pkgname}.sh)
-sha512sums=('f6c1bee07ca7262df64047fbbd615ca243f21b74ec54db6967e47364af1c40c129dafb68b06fe51349af1697c60da0af125c94fb9e97c628cc21514fd7509c76')
+source=(https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/optimise-image.sh)
+sha512sums=('65bc7de1344091b0eaf3e0503b8f08580c75f3610f526000ccd5c0e56785fa6b72724ec656de94c37c954447f860186955cd553a7a7c9e6ac9e14e03d03a8b62')
 
 package() {
 	install -d "${pkgdir}/usr/bin"
-	install -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+	install -m755 "${srcdir}/optimise-image.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
