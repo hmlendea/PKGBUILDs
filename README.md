@@ -130,8 +130,10 @@ See the [contributing guidelines](./CONTRIBUTING.md) for details on how to repor
 
 See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
 
-## 💝 Support
+## 💝 Project Engagement
 
-Found a bug or have a suggestion? [Open an issue](https://github.com/hmlendea/PKGBUILDs/issues)!
+Discovered a problem or have a suggestion? [Open an issue](https://github.com/hmlendea/PKGBUILDs/issues)!
 
-If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or giving a ⭐️ on GitHub!
+If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or starring ⭐️ it on GitHub!
+
+[![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)
