@@ -98,6 +98,12 @@ bash makepkgs.sh
 |-----------|---------|
 | `pkg/` | Contains one subdirectory per package, each with a `PKGBUILD` and any supplementary files |
 
+## 🏗️ Architecture
+
+PKGBUILDs implements a build pipeline architecture orchestrated by `makepkgs.sh`, transforming PKGBUILD definitions into multi-architecture packages and repository databases distributed via GitHub Releases.
+
+See the [Architecture Documentation](ARCHITECTURE.md) for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
+
 ## 🛡️ Privacy and Data
 
 This repository does not collect, process, transmit, or persist user data, analytics, diagnostics, or telemetry. The packages and build scripts do not handle personal data. For details, see [PRIVACY.md](PRIVACY.md).
