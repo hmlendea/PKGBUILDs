@@ -1,5 +1,6 @@
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 [![Latest Release](https://img.shields.io/github/v/release/hmlendea/PKGBUILDs)](https://github.com/hmlendea/PKGBUILDs/releases/latest)
+[![Lint Status](https://github.com/hmlendea/PKGBUILDs/actions/workflows/bash.yml/badge.svg)](https://github.com/hmlendea/PKGBUILDs/actions/workflows/bash.yml)
 
 # PKGBUILDs
 
@@ -16,11 +17,15 @@ Personal Arch Linux package repository, providing custom and unofficial packages
 - [Development](#development)
   - [Requirements](#requirements)
   - [Build](#build)
+- [GitHub Actions](#github-actions)
 - [Project Structure](#project-structure)
+- [Architecture](#architecture)
+- [Documentation](#documentation)
 - [Privacy and Data](#privacy-and-data)
 - [Contributing](#contributing)
 - [Code of Conduct](#code-of-conduct)
-- [Support](#support)
+- [Security](#security)
+- [Project Engagement](#project-engagement)
 
 ## ✨ Capabilities
 
@@ -92,11 +97,19 @@ pacman -S grub2-theme-nuci hori-fonts image-optimiser plex-video-optimiser
 bash makepkgs.sh
 ```
 
+## ⚙️ GitHub Actions
+
+| Workflow | Purpose | Principal Actions |
+|----------|---------|-------------------|
+| [Bash](.github/workflows/bash.yml) | Lint Bash scripts | Checks out repository; runs `shellcheck` on all `*.sh` files with error severity |
+
 ## 🗂️ Project Structure
 
 | Directory | Purpose |
 |-----------|---------|
 | `pkg/` | Contains one subdirectory per package, each with a `PKGBUILD` and any supplementary files |
+| `repo/` | Built package artifacts (`.pkg.tar.zst`) and repository databases (`.db`, `.files`) |
+| `docs/` | Supplementary documentation covering architecture, components, flows, operations, and reference |
 
 ## 🏗️ Architecture
 
@@ -104,11 +117,16 @@ PKGBUILDs implements a build pipeline architecture orchestrated by `makepkgs.sh`
 
 See the [Architecture Documentation](ARCHITECTURE.md) for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
 
-## 🔒 Security
+## 📚 Documentation
 
-This repository provides a personal Arch Linux package repository with custom and unofficial packages distributed via GitHub Releases. The security policy covers the build pipeline, package definitions, and distribution mechanism.
+A substantive `docs/` directory exists with detailed documentation organised by topic:
 
-See the [Security Policy](SECURITY.md) for supported versions, vulnerability reporting, scope, and disclosure policy.
+- **Architecture & Design:** [Architecture](./docs/architecture.md), [Design Decisions](./docs/design-decisions.md), [Repository Structure](./docs/repository-structure.md), [Data Model](./docs/data-model.md)
+- **Build & Deployment:** [Build and Deployment](./docs/build-and-deployment.md), [Configuration](./docs/configuration.md), [Dependencies](./docs/dependencies.md)
+- **Components:** [Build Pipeline](./docs/components/build-pipeline.md), [Package Definitions](./docs/components/package-definitions.md), [Repository Generation](./docs/components/repository-generation.md)
+- **Flows:** [Package Build Flow](./docs/flows/package-build.md), [Repository Generation Flow](./docs/flows/repository-generation.md), [Release Distribution Flow](./docs/flows/release-distribution.md)
+- **Operations & Maintenance:** [Change Guide](./docs/change-guide.md), [Testing](./docs/testing.md), [Troubleshooting](./docs/troubleshooting.md), [Documentation Maintenance](./docs/documentation-maintenance.md)
+- **Reference:** [API Reference Index](./docs/api-reference/INDEX.md), [Invariants](./docs/invariants.md), [Error Handling](./docs/error-handling.md), [Logging](./docs/logging.md), [Security](./docs/security.md), [FAQ](./docs/faq.md), [Quick Start](./docs/quick-start.md), [Ambiguities and Open Questions](./docs/ambiguities-and-open-questions.md)
 
 ## 🛡️ Privacy and Data
 
@@ -129,6 +147,12 @@ See the [contributing guidelines](./CONTRIBUTING.md) for details on how to repor
 ## 📜 Code of Conduct
 
 See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
+
+## 🔒 Security
+
+This repository provides a personal Arch Linux package repository with custom and unofficial packages distributed via GitHub Releases. The security policy covers the build pipeline, package definitions, and distribution mechanism.
+
+See the [Security Policy](SECURITY.md) for supported versions, vulnerability reporting, scope, and disclosure policy.
 
 ## 💝 Project Engagement
 
