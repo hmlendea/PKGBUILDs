@@ -1,6 +1,7 @@
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 [![Latest Release](https://img.shields.io/github/v/release/hmlendea/PKGBUILDs)](https://github.com/hmlendea/PKGBUILDs/releases/latest)
 [![Lint Status](https://github.com/hmlendea/PKGBUILDs/actions/workflows/bash.yml/badge.svg)](https://github.com/hmlendea/PKGBUILDs/actions/workflows/bash.yml)
+[![License](https://img.shields.io/github/license/hmlendea/PKGBUILDs)](https://github.com/hmlendea/PKGBUILDs/blob/master/LICENSE)
 
 # PKGBUILDs
 
@@ -26,6 +27,7 @@ Personal Arch Linux package repository, providing custom and unofficial packages
 - [Code of Conduct](#code-of-conduct)
 - [Security](#security)
 - [Project Engagement](#project-engagement)
+- [License](#license)
 
 ## ✨ Capabilities
 
@@ -161,3 +163,8 @@ Discovered a problem or have a suggestion? [Open an issue](https://github.com/hm
 If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or starring ⭐️ it on GitHub!
 
 [![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)
+
+## 📄 License
+
+This project is being distributed under the `GNU General Public License v3.0` or later.
+See [LICENSE](./LICENSE) for additional information.
