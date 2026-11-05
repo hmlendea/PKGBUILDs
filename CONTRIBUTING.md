@@ -93,6 +93,10 @@ bash makepkgs.sh
 
 This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
+## 🔒 Security
+
+Report security vulnerabilities per the [Security Policy](SECURITY.md).
+
 ## ❓ Getting Assistance
 
 - [Open an issue](https://github.com/hmlendea/PKGBUILDs/issues)

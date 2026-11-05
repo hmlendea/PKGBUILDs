@@ -104,6 +104,12 @@ PKGBUILDs implements a build pipeline architecture orchestrated by `makepkgs.sh`
 
 See the [Architecture Documentation](ARCHITECTURE.md) for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
 
+## 🔒 Security
+
+This repository provides a personal Arch Linux package repository with custom and unofficial packages distributed via GitHub Releases. The security policy covers the build pipeline, package definitions, and distribution mechanism.
+
+See the [Security Policy](SECURITY.md) for supported versions, vulnerability reporting, scope, and disclosure policy.
+
 ## 🛡️ Privacy and Data
 
 This repository does not collect, process, transmit, or persist user data, analytics, diagnostics, or telemetry. The packages and build scripts do not handle personal data. For details, see [PRIVACY.md](PRIVACY.md).
